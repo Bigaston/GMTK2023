@@ -1,3 +1,4 @@
+import { appWindow } from "@tauri-apps/api/window";
 import { Application, DisplayObject } from "pixi.js";
 
 export class Manager {
@@ -19,6 +20,16 @@ export class Manager {
   }
   public static get height(): number {
     return Manager._height;
+  }
+
+  public static toggleFullscreen(): void {
+    if ((window as any).__TAURI_IPC__ !== undefined) {
+      appWindow.isFullscreen().then((isFullscreen) => {
+        appWindow.setFullscreen(!isFullscreen);
+      });
+    } else {
+      document.documentElement.requestFullscreen();
+    }
   }
 
   // Use this function ONCE to start the entire machinery
@@ -46,6 +57,12 @@ export class Manager {
 
     // Add the ticker
     Manager.app.ticker.add(Manager.update);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "F11") {
+        Manager.toggleFullscreen();
+      }
+    });
   }
 
   // Call this function when you want to go to a new scene
