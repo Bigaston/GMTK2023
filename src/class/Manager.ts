@@ -1,4 +1,3 @@
-import { Engine as PhysicsEngine, World } from "matter-js";
 import { Application, DisplayObject } from "pixi.js";
 
 export class Manager {
@@ -20,12 +19,6 @@ export class Manager {
   }
   public static get height(): number {
     return Manager._height;
-  }
-
-  public static _physicEngine: PhysicsEngine;
-
-  public static changePhysicWorld(world: World): void {
-    Manager._physicEngine.world = world;
   }
 
   // Use this function ONCE to start the entire machinery
@@ -51,9 +44,6 @@ export class Manager {
     window.addEventListener("resize", Manager.resize);
     Manager.resize();
 
-    // Create the physics engine
-    Manager._physicEngine = PhysicsEngine.create();
-
     // Add the ticker
     Manager.app.ticker.add(Manager.update);
   }
@@ -75,8 +65,6 @@ export class Manager {
   private static update(framesPassed: number): void {
     // Let the current scene know that we updated it...
     // Just for funzies, sanity check that it exists first.
-    PhysicsEngine.update(Manager._physicEngine, Manager.app.ticker.deltaMS);
-
     if (Manager.currentScene) {
       Manager.currentScene.update(framesPassed);
     }
