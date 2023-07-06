@@ -2,13 +2,14 @@ import { Assets, Container } from "pixi.js";
 import { Composite, World as PhysicWorld } from "matter-js";
 import { IScene, Manager } from "../class/Manager";
 import { PhysicSprite } from "../class/PhysicSprite";
+import { Character } from "../class/Character";
 
 export class MainScene extends Container implements IScene {
   private world = PhysicWorld.create({
     gravity: {
       x: 0,
       y: 1,
-      scale: 0.001,
+      scale: 0.1,
     },
   });
 
@@ -21,7 +22,7 @@ export class MainScene extends Container implements IScene {
       let tile = new PhysicSprite(
         Assets.get("Tile"),
         { x: x * 64, y: 600 },
-        { isStatic: true }
+        { isStatic: true, friction: 0 }
       );
 
       this.addChild(tile);
@@ -29,7 +30,7 @@ export class MainScene extends Container implements IScene {
     }
 
     // Character
-    let character = new PhysicSprite(Assets.get("Character"), {
+    let character = new Character(Assets.get("Character"), {
       x: 100,
       y: 100,
     });

@@ -2,7 +2,7 @@ import { Bodies, Body } from "matter-js";
 import { Sprite, Texture } from "pixi.js";
 
 export class PhysicSprite extends Sprite {
-  private _body: Body;
+  protected _body: Body;
 
   public get body(): Body {
     return this._body;

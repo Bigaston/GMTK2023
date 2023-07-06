@@ -17,6 +17,7 @@
     "@brianchirls/game-input": "^0.1.1",
     "howler": "^2.2.3",
     "matter-js": "^0.19.0",
-    "pixi.js": "^7.2.4"
+    "pixi.js": "^7.2.4",
+    "tslib": "^2.6.0"
   }
 }
