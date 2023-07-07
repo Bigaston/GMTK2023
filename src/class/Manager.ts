@@ -8,7 +8,11 @@ export class Manager {
 
   // Safely store variables for our game
   private static app: Application;
-  private static currentScene: IScene;
+  private static _currentScene: IScene;
+
+  public static get currentScene(): IScene {
+    return Manager._currentScene;
+  }
 
   // Width and Height are read-only after creation (for now)
   private static _width: number;
@@ -50,6 +54,7 @@ export class Manager {
       backgroundColor: background,
       width: width,
       height: height,
+      sharedTicker: true,
     });
 
     window.addEventListener("resize", Manager.resize);
@@ -68,22 +73,22 @@ export class Manager {
   // Call this function when you want to go to a new scene
   public static changeScene(newScene: IScene): void {
     // Remove and destroy old scene... if we had one..
-    if (Manager.currentScene) {
-      Manager.app.stage.removeChild(Manager.currentScene);
-      Manager.currentScene.destroy();
+    if (Manager._currentScene) {
+      Manager.app.stage.removeChild(Manager._currentScene);
+      Manager._currentScene.destroy();
     }
 
     // Add the new one
-    Manager.currentScene = newScene;
-    Manager.app.stage.addChild(Manager.currentScene);
+    Manager._currentScene = newScene;
+    Manager.app.stage.addChild(Manager._currentScene);
   }
 
   // This update will be called by a pixi ticker and tell the scene that a tick happened
   private static update(framesPassed: number): void {
     // Let the current scene know that we updated it...
     // Just for funzies, sanity check that it exists first.
-    if (Manager.currentScene) {
-      Manager.currentScene.update(framesPassed);
+    if (Manager._currentScene) {
+      Manager._currentScene.update(framesPassed);
     }
 
     // as I said before, I HATE the "frame passed" approach. I would rather use `Manager.app.ticker.deltaMS`

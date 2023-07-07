@@ -1,9 +1,12 @@
 import { Assets, Container, Graphics, Sprite, Texture, Text } from "pixi.js";
 import { Profile } from "../data/Profile";
+import { MainScene } from "../scenes/MainScene";
+import { Manager } from "./Manager";
 
 export class ProfileCard extends Container {
   public static readonly WIDTH = 150;
   public static readonly HEIGHT = 150;
+  public static readonly HOVER_TIMEOUT = 300;
 
   private _profile: Profile;
 
@@ -67,5 +70,52 @@ export class ProfileCard extends Container {
     age.y = ProfileCard.HEIGHT - infoContainerBackground.height + 30;
 
     this.addChild(age);
+
+    // Hover Pointer Event
+    let timeoutHover: number;
+    let isAnimationFinished = false;
+
+    this.addEventListener("pointerenter", () => {
+      this.addEventListener("pointerleave", onPointerLeave);
+
+      timeoutHover = setTimeout(() => {
+        this.zIndex = 1001;
+
+        let currentScene = Manager.currentScene as MainScene;
+
+        currentScene.profileHoverBackground
+          .fadeIn()
+          .then(() => {
+            isAnimationFinished = true;
+          })
+          .catch(() => {
+            isAnimationFinished = true;
+          });
+
+        currentScene.profileCardPreview.fadeIn(profile).catch(() => {});
+      }, ProfileCard.HOVER_TIMEOUT);
+    });
+
+    let onPointerLeave = () => {
+      this.removeEventListener("pointerleave", onPointerLeave);
+      clearTimeout(timeoutHover);
+
+      let currentScene = Manager.currentScene as MainScene;
+
+      currentScene.profileHoverBackground
+        .fadeOut()
+        .then(() => {
+          this.zIndex = 1;
+
+          isAnimationFinished = false;
+        })
+        .catch(() => {
+          this.zIndex = 1;
+
+          isAnimationFinished = false;
+        });
+
+      currentScene.profileCardPreview.fadeOut().catch(() => {});
+    };
   }
 }
