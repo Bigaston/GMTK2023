@@ -7,9 +7,6 @@ import { ProfileHoverBackground } from "../class/ProfileHoverBackground";
 import { ProfileCardPreview } from "../class/ProfileCardPreview";
 
 export class MainScene extends Container implements IScene {
-  private _userPart: Container;
-  private _infoPart: Container;
-
   private _updatable: IUpdatable[] = [];
 
   private _profileHoverBackground: ProfileHoverBackground =
@@ -29,19 +26,15 @@ export class MainScene extends Container implements IScene {
     this.sortableChildren = true;
 
     // User Part
-    this._userPart = new Container();
-    this._userPart.x = 0;
-    this._userPart.y = 0;
-
     let userPartBackground = Sprite.from(Texture.WHITE);
     userPartBackground.width = (Manager.width / 3) * 2;
     userPartBackground.height = Manager.height / 2;
+    userPartBackground.x = 0;
+    userPartBackground.y = 0;
 
     userPartBackground.tint = 0xff0000;
 
-    this._userPart.addChild(userPartBackground);
-
-    this.addChild(this._userPart);
+    this.addChild(userPartBackground);
 
     // Card Parts
     let cardPartBackground = Sprite.from(Texture.WHITE);
@@ -55,19 +48,15 @@ export class MainScene extends Container implements IScene {
     this.addChild(cardPartBackground);
 
     // Info Part
-    this._infoPart = new Container();
-    this._infoPart.x = (Manager.width / 3) * 2;
-    this._infoPart.y = 0;
-
     let infoPartBackground = Sprite.from(Texture.WHITE);
     infoPartBackground.width = Manager.width / 3;
     infoPartBackground.height = Manager.height;
+    infoPartBackground.x = (Manager.width / 3) * 2;
+    infoPartBackground.y = 0;
 
     infoPartBackground.tint = 0x00ff00;
 
-    this._infoPart.addChild(infoPartBackground);
-
-    this.addChild(this._infoPart);
+    this.addChild(infoPartBackground);
 
     // Import Profile Card
     let level = level1;

@@ -1,4 +1,12 @@
-import { Assets, Container, Graphics, Sprite, Texture, Text } from "pixi.js";
+import {
+  Assets,
+  Container,
+  Graphics,
+  Sprite,
+  Texture,
+  Text,
+  FederatedPointerEvent,
+} from "pixi.js";
 import { Profile } from "../data/Profile";
 import { MainScene } from "../scenes/MainScene";
 import { Manager } from "./Manager";
@@ -73,24 +81,22 @@ export class ProfileCard extends Container {
 
     // Hover Pointer Event
     let timeoutHover: number;
-    let isAnimationFinished = false;
 
     this.addEventListener("pointerenter", () => {
       this.addEventListener("pointerleave", onPointerLeave);
 
       timeoutHover = setTimeout(() => {
+        if (isDragging) {
+          return;
+        }
+
         this.zIndex = 1001;
 
         let currentScene = Manager.currentScene as MainScene;
 
-        currentScene.profileHoverBackground
-          .fadeIn()
-          .then(() => {
-            isAnimationFinished = true;
-          })
-          .catch(() => {
-            isAnimationFinished = true;
-          });
+        currentScene.profileHoverBackground.fadeIn().catch(() => {
+          this.zIndex = 1;
+        });
 
         currentScene.profileCardPreview.fadeIn(profile).catch(() => {});
       }, ProfileCard.HOVER_TIMEOUT);
@@ -106,16 +112,52 @@ export class ProfileCard extends Container {
         .fadeOut()
         .then(() => {
           this.zIndex = 1;
-
-          isAnimationFinished = false;
         })
         .catch(() => {
           this.zIndex = 1;
-
-          isAnimationFinished = false;
         });
 
       currentScene.profileCardPreview.fadeOut().catch(() => {});
+    };
+
+    let mouseOffset = { x: 0, y: 0 };
+    let initialPosition = { x: 0, y: 0 };
+    let isDragging = false;
+
+    this.addEventListener("pointerdown", (event) => {
+      mouseOffset.x = event.data.global.x - this.x;
+      mouseOffset.y = event.data.global.y - this.y;
+
+      initialPosition.x = this.x;
+      initialPosition.y = this.y;
+
+      isDragging = true;
+
+      this.addEventListener("pointermove", onPointerMove);
+      this.addEventListener("pointerup", onPointerUp);
+
+      let currentScene = Manager.currentScene as MainScene;
+
+      this.zIndex = 10;
+
+      currentScene.profileHoverBackground.hide();
+      currentScene.profileCardPreview.hide();
+    });
+
+    let onPointerMove = (event: FederatedPointerEvent) => {
+      this.x = event.data.global.x - mouseOffset.x;
+      this.y = event.data.global.y - mouseOffset.y;
+    };
+
+    let onPointerUp = (_event: FederatedPointerEvent) => {
+      isDragging = false;
+
+      this.x = initialPosition.x;
+      this.y = initialPosition.y;
+      this.zIndex = 1;
+
+      this.removeEventListener("pointermove", onPointerMove);
+      this.removeEventListener("pointerup", onPointerUp);
     };
   }
 }

@@ -26,6 +26,10 @@ export class Manager {
     return Manager._height;
   }
 
+  private static _renderElement: HTMLCanvasElement = document.getElementById(
+    "pixi-canvas"
+  ) as HTMLCanvasElement;
+
   public static toggleFullscreen(): void {
     if ((window as any).__TAURI_IPC__ !== undefined) {
       appWindow.isFullscreen().then((isFullscreen) => {
@@ -48,7 +52,7 @@ export class Manager {
 
     // Create our pixi app
     Manager.app = new Application({
-      view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
+      view: Manager._renderElement,
       resolution: window.devicePixelRatio || 1,
       autoDensity: true,
       backgroundColor: background,

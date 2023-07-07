@@ -81,4 +81,12 @@ export class ProfileHoverBackground extends Sprite implements IUpdatable {
 
     return promise;
   }
+
+  public hide() {
+    this.alpha = 0;
+    this.visible = false;
+    this.animationDirection = "none";
+
+    if (this._animationPromiseReject !== null) this._animationPromiseReject();
+  }
 }

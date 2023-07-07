@@ -105,6 +105,14 @@ export class ProfileCardPreview extends Container implements IUpdatable {
     return promise;
   }
 
+  public hide() {
+    this.alpha = 0;
+    this.visible = false;
+    this.animationDirection = "none";
+
+    if (this._animationPromiseReject !== null) this._animationPromiseReject();
+  }
+
   public updateProfile(profile: Profile): void {
     this._profilePicture.texture = Assets.get(profile.profilePicture);
   }
