@@ -149,8 +149,9 @@ export class ProfileCard extends Container {
       this.y = event.data.global.y - mouseOffset.y;
     };
 
-    let onPointerUp = (_event: FederatedPointerEvent) => {
+    let onPointerUp = (event: FederatedPointerEvent) => {
       isDragging = false;
+      clearTimeout(timeoutHover);
 
       this.x = initialPosition.x;
       this.y = initialPosition.y;
@@ -158,6 +159,16 @@ export class ProfileCard extends Container {
 
       this.removeEventListener("pointermove", onPointerMove);
       this.removeEventListener("pointerup", onPointerUp);
+
+      let currentScene = Manager.currentScene as MainScene;
+
+      if (
+        currentScene.matcherZone
+          .getBounds()
+          .contains(event.data.global.x, event.data.global.y)
+      ) {
+        currentScene.onProfileCardDrop(this._profile, this);
+      }
     };
   }
 }

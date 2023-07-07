@@ -5,6 +5,8 @@ import { ProfileCard } from "../class/ProfileCard";
 import { IUpdatable } from "../class/IUpdatable";
 import { ProfileHoverBackground } from "../class/ProfileHoverBackground";
 import { ProfileCardPreview } from "../class/ProfileCardPreview";
+import { Profile } from "../data/Profile";
+import { MatchNotif } from "../class/MatchNotif";
 
 export class MainScene extends Container implements IScene {
   private _updatable: IUpdatable[] = [];
@@ -18,6 +20,11 @@ export class MainScene extends Container implements IScene {
   private _profileCardPreview: ProfileCardPreview = new ProfileCardPreview();
   public get profileCardPreview(): ProfileCardPreview {
     return this._profileCardPreview;
+  }
+
+  private _matcherZone: Container = new Container();
+  public get matcherZone(): Container {
+    return this._matcherZone;
   }
 
   constructor() {
@@ -87,11 +94,34 @@ export class MainScene extends Container implements IScene {
 
     this.addChild(this._profileCardPreview);
     this._updatable.push(this._profileCardPreview);
+
+    // Matcher Picture
+    let matcherPicture = Sprite.from(Texture.WHITE);
+    matcherPicture.width = 300;
+    matcherPicture.height = 300;
+    matcherPicture.tint = 0x00ffff;
+
+    this._matcherZone.x = Manager.width / 3 - matcherPicture.width / 2;
+    this._matcherZone.y = Manager.height / 2 - matcherPicture.height;
+
+    this._matcherZone.addChild(matcherPicture);
+
+    this.addChild(this._matcherZone);
   }
 
   update(_framesPassed: number): void {
     this._updatable.forEach((updatable) => {
       updatable.update(_framesPassed);
     });
+  }
+
+  public onProfileCardDrop(profile: Profile, sender: ProfileCard) {
+    sender.removeFromParent();
+
+    let matchNotif = new MatchNotif({ x: 600, y: 200 });
+
+    this.addChild(matchNotif);
+
+    console.log(profile);
   }
 }
