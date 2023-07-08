@@ -1,7 +1,7 @@
 import { attributes } from "../Attributes";
 import { Profile } from "../Profile";
 
-const profile: Profile = {
+const profile7: Profile = {
   name: "Grace",
   age: 19,
   profilePicture: "Profile_Benguigui",
@@ -17,4 +17,4 @@ const profile: Profile = {
   ],
 };
 
-export default profile;
+export default profile7;

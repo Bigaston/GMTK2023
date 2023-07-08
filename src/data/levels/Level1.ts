@@ -1,22 +1,14 @@
 import { attributes } from "../Attributes";
 import { Level } from "../Level";
-
-import benguigui from "../profiles/benguigui";
+import profile1 from "../profiles/1";
+import profile12 from "../profiles/12";
+import profile15 from "../profiles/15";
+import profile16 from "../profiles/16";
+import profile9_1 from "../profiles/9_1";
 
 const level1: Level = {
   number: 0,
-  profiles: [
-    benguigui,
-    benguigui,
-    benguigui,
-    benguigui,
-    benguigui,
-    benguigui,
-    benguigui,
-    benguigui,
-    benguigui,
-    benguigui,
-  ],
+  profiles: [profile1, profile12, profile16, profile15, profile9_1],
   likes: [
     attributes.physical.hairColor.dark,
     attributes.activity.goout.netflix,

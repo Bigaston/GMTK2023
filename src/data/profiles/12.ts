@@ -1,7 +1,7 @@
 import { attributes } from "../Attributes";
 import { Profile } from "../Profile";
 
-const profile: Profile = {
+const profile12: Profile = {
   name: "Ryan",
   age: 24,
   profilePicture: "Profile_Benguigui",
@@ -15,4 +15,4 @@ const profile: Profile = {
   displayedAttributes: [attributes.various.relationType.oneNight],
 };
 
-export default profile;
+export default profile12;
