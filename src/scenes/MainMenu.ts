@@ -6,5 +6,5 @@ export class MainMenu extends Container implements IScene {
     super();
   }
 
-  update(framesPassed: number): void {}
+  update(_framesPassed: number): void {}
 }

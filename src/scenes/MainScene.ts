@@ -438,6 +438,10 @@ export class MainScene extends Container implements IScene {
   public onErrorGuess() {
     this._isOnErrorAnimation = true;
     this._errorAnimationTime = 0;
+
+    let audioAsset = Assets.get("Buzzer");
+    audioAsset.volume(0.2);
+    audioAsset.play();
   }
 
   update(_framesPassed: number): void {

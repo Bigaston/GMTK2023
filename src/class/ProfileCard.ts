@@ -168,6 +168,7 @@ export class ProfileCard extends Container implements IUpdatable {
 
       this.removeEventListener("pointermove", onPointerMove);
       this.removeEventListener("pointerup", onPointerUp);
+      this.removeEventListener("pointerupoutside", onPointerUp);
 
       let currentScene = Manager.currentScene as MainScene;
 

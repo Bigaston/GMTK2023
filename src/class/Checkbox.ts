@@ -21,6 +21,8 @@ export class Checkbox extends Sprite {
         : Assets.get("Checkbox");
 
       this.onChangeValue(this._checked);
+
+      Assets.get("UIClick").play();
     });
   }
 

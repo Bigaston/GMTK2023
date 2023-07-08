@@ -38,6 +38,10 @@ export class Button extends Container {
 
       textComponent.y += 5;
 
+      let audioAsset = Assets.get("BtnPressed");
+      audioAsset.volume(0.2);
+      audioAsset.play();
+
       this.onClick();
     });
 
