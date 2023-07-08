@@ -10,9 +10,8 @@ import {
 import { Profile } from "../data/Profile";
 import { MainScene } from "../scenes/MainScene";
 import { Manager } from "./Manager";
-import { IUpdatable } from "./IUpdatable";
 
-export class ProfileCard extends Container implements IUpdatable {
+export class ProfileCard extends Container {
   public static readonly WIDTH = 150;
   public static readonly HEIGHT = 150;
   public static readonly HOVER_TIMEOUT = 300;
@@ -196,12 +195,5 @@ export class ProfileCard extends Container implements IUpdatable {
     likedSprite.y = 0;
 
     this.addChild(likedSprite);
-  }
-
-  update(_frameElapsed: number): void {
-    if (!this._isDragging) {
-      this.y =
-        this._initialPosition.y + Math.sin(Date.now() / 800 + this.x) * 2;
-    }
   }
 }

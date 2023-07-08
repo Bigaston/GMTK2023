@@ -54,6 +54,7 @@ export class MainScene extends Container implements IScene {
     super();
 
     this._level = level;
+    this._level.profiles.sort(() => Math.random() - 0.5);
 
     this._infoAttributes = this._level.alreadyPresentProperty.map((attr) => {
       return {
@@ -99,7 +100,6 @@ export class MainScene extends Container implements IScene {
       });
 
       this.addChild(profileCard);
-      this._updatable.push(profileCard);
     });
 
     // Profile Hover Background
