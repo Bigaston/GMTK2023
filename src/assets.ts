@@ -9,6 +9,8 @@ export const manifest: ResolverManifest = {
         Roboto: "./Roboto.ttf",
         Heart: "./img/heart.png",
         BrokenHeart: "./img/broken-heart.png",
+        Checkbox: "./img/ui/checkbox.png",
+        CheckboxChecked: "./img/ui/checkboxChecked.png",
       },
     },
     {

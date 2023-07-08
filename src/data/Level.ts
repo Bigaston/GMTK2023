@@ -5,4 +5,10 @@ export interface Level {
   profiles: Profile[];
   likes: string[];
   dislikes: string[];
+  alreadyPresentProperty: LevelAttribute[];
+}
+
+export interface LevelAttribute {
+  path: string;
+  likeStatus: "like" | "dislike";
 }

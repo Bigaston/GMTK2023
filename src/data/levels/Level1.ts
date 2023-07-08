@@ -25,6 +25,20 @@ const level1: Level = {
     attributes.physical.hairColor.blonde,
     attributes.various.diet.vegan,
   ],
+  alreadyPresentProperty: [
+    {
+      path: attributes.physical.hairColor.dark,
+      likeStatus: "like",
+    },
+    {
+      path: attributes.activity.goout.netflix,
+      likeStatus: "like",
+    },
+    {
+      path: attributes.various.pets.dog,
+      likeStatus: "dislike",
+    },
+  ],
 };
 
 export default level1;

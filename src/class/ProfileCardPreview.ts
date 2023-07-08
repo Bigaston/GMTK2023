@@ -9,7 +9,7 @@ import {
 } from "pixi.js";
 import { Profile } from "../data/Profile";
 import { IUpdatable } from "./IUpdatable";
-import { AttributeCategory, attributesCategory } from "../data/Attributes";
+import { stringToCategory } from "../data/Attributes";
 
 export class ProfileCardPreview extends Container implements IUpdatable {
   public static readonly WIDTH = 600;
@@ -176,36 +176,8 @@ export class ProfileCardPreview extends Container implements IUpdatable {
     this._infoContainer.addChild(profileDescription);
 
     // Displayed Attributes
-    let neededSubCategory = profile.displayedAttributes.map(
-      (attribute) => attribute.split(".")[0] + "." + attribute.split(".")[1]
-    );
 
-    let neededCategory = profile.displayedAttributes
-      .map((attribute) => attribute.split(".")[0])
-      .map(
-        (attributeCate) =>
-          attributesCategory.find((cate) => cate.name === attributeCate)!
-      )
-      .filter((cate, index, array) => array.indexOf(cate) === index)
-      .map((cate) => {
-        return {
-          ...cate,
-          attributes: cate.attributes
-            .filter((attribute) =>
-              neededSubCategory.includes(cate.name + "." + attribute.name)
-            )
-            .map((attribute) => {
-              return {
-                ...attribute,
-                value: attribute.value.filter((value) =>
-                  profile.displayedAttributes.includes(
-                    cate.name + "." + attribute.name + "." + value.name
-                  )
-                ),
-              };
-            }),
-        } as AttributeCategory;
-      });
+    let neededCategory = stringToCategory(profile.displayedAttributes);
 
     let currentY = profileDescription.y + profileDescription.height + 10;
 

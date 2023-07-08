@@ -25,27 +25,27 @@ export let attributesCategory: AttributeCategory[] = [
         name: "hairColor",
         value: [
           {
-            displayName: "Brown",
-            name: "brown",
+            displayName: "Dark hair",
+            name: "dark",
           },
           {
-            displayName: "Blonde",
+            displayName: "Blonde hair",
             name: "blonde",
           },
           {
-            displayName: "Ginger",
+            displayName: "Ginger hair",
             name: "ginger",
           },
           {
-            displayName: "Gray",
+            displayName: "Gray hair",
             name: "gray",
           },
           {
-            displayName: "Colored",
+            displayName: "Colored hair",
             name: "colored",
           },
           {
-            displayName: "Bald",
+            displayName: "Bald hair",
             name: "bald",
           },
         ],
@@ -310,7 +310,7 @@ export let attributesCategory: AttributeCategory[] = [
 export let attributes = {
   physical: {
     hairColor: {
-      brown: "physical.hairColor.brown",
+      dark: "physical.hairColor.dark",
       blonde: "physical.hairColor.blonde",
       ginger: "physical.hairColor.ginger",
       gray: "physical.hairColor.gray",
@@ -394,3 +394,36 @@ export let attributes = {
     },
   },
 };
+
+export function stringToCategory(string: string[]) {
+  let neededSubCategory = string.map(
+    (attribute) => attribute.split(".")[0] + "." + attribute.split(".")[1]
+  );
+
+  return string
+    .map((attribute) => attribute.split(".")[0])
+    .map(
+      (attributeCate) =>
+        attributesCategory.find((cate) => cate.name === attributeCate)!
+    )
+    .filter((cate, index, array) => array.indexOf(cate) === index)
+    .map((cate) => {
+      return {
+        ...cate,
+        attributes: cate.attributes
+          .filter((attribute) =>
+            neededSubCategory.includes(cate.name + "." + attribute.name)
+          )
+          .map((attribute) => {
+            return {
+              ...attribute,
+              value: attribute.value.filter((value) =>
+                string.includes(
+                  cate.name + "." + attribute.name + "." + value.name
+                )
+              ),
+            };
+          }),
+      };
+    });
+}

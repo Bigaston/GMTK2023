@@ -1,4 +1,4 @@
-import { Container, Sprite, Texture } from "pixi.js";
+import { Container, Sprite, Texture, Text, Assets } from "pixi.js";
 import { IScene, Manager } from "../class/Manager";
 import { ProfileCard } from "../class/ProfileCard";
 import { IUpdatable } from "../class/IUpdatable";
@@ -7,6 +7,8 @@ import { ProfileCardPreview } from "../class/ProfileCardPreview";
 import { Profile } from "../data/Profile";
 import { MatchNotif } from "../class/MatchNotif";
 import { Level } from "../data/Level";
+import { stringToCategory } from "../data/Attributes";
+import { Checkbox } from "../class/Checkbox";
 
 export class MainScene extends Container implements IScene {
   private _updatable: IUpdatable[] = [];
@@ -29,10 +31,25 @@ export class MainScene extends Container implements IScene {
 
   private _level: Level;
 
+  private _infoAttributes: {
+    status: "like" | "dislike" | "none";
+    path: string;
+    canBeDeleted: boolean;
+  }[];
+
   constructor(level: Level) {
     super();
 
     this._level = level;
+
+    this._infoAttributes = this._level.alreadyPresentProperty.map((attr) => {
+      return {
+        status: "none",
+        path: attr.path,
+        canBeDeleted: false,
+      };
+    });
+
     this.sortableChildren = true;
 
     // User Part
@@ -56,17 +73,6 @@ export class MainScene extends Container implements IScene {
     cardPartBackground.tint = 0x0000ff;
 
     this.addChild(cardPartBackground);
-
-    // Info Part
-    let infoPartBackground = Sprite.from(Texture.WHITE);
-    infoPartBackground.width = Manager.width / 3;
-    infoPartBackground.height = Manager.height;
-    infoPartBackground.x = (Manager.width / 3) * 2;
-    infoPartBackground.y = 0;
-
-    infoPartBackground.tint = 0x00ff00;
-
-    this.addChild(infoPartBackground);
 
     this._level.profiles.forEach((profile, index) => {
       let profileCard = new ProfileCard(profile, {
@@ -108,6 +114,153 @@ export class MainScene extends Container implements IScene {
     this._matcherZone.addChild(matcherPicture);
 
     this.addChild(this._matcherZone);
+
+    // Info Part
+    let infoPartBackground = Sprite.from(Texture.WHITE);
+    infoPartBackground.width = Manager.width / 3;
+    infoPartBackground.height = Manager.height;
+    infoPartBackground.x = (Manager.width / 3) * 2;
+    infoPartBackground.y = 0;
+
+    infoPartBackground.tint = 0x00ff00;
+
+    this.addChild(infoPartBackground);
+
+    let infoTitle = new Text("User Like Profile", {
+      fontFamily: "Belanosima",
+    });
+
+    infoTitle.x =
+      (Manager.width / 3) * 2 + (Manager.width / 3 / 2 - infoTitle.width / 2);
+    infoTitle.y = 20;
+
+    this.addChild(infoTitle);
+
+    let heartSprite = Sprite.from(Assets.get("Heart"));
+    heartSprite.width = 50;
+    heartSprite.height = 50;
+    heartSprite.x = (Manager.width / 3) * 2 + 250;
+    heartSprite.y = 50;
+
+    this.addChild(heartSprite);
+
+    let heartBrokenSprite = Sprite.from(Assets.get("BrokenHeart"));
+    heartBrokenSprite.width = 50;
+    heartBrokenSprite.height = 50;
+
+    heartBrokenSprite.x = (Manager.width / 3) * 2 + 330;
+    heartBrokenSprite.y = 50;
+
+    this.addChild(heartBrokenSprite);
+
+    let neededCategory = stringToCategory(
+      this._infoAttributes.map((attribute) => attribute.path)
+    );
+
+    let currentY = 80;
+    let currentX = (Manager.width / 3) * 2 + 20;
+
+    console.log(neededCategory);
+
+    neededCategory.forEach((category) => {
+      currentY += 30;
+
+      let categoryTitle = new Text(category.displayName, {
+        fontFamily: "Roboto",
+        fontSize: 26,
+      });
+
+      categoryTitle.x = currentX;
+      categoryTitle.y = currentY;
+
+      currentY += categoryTitle.height + 5;
+
+      this.addChild(categoryTitle);
+
+      category.attributes.forEach((attribute) => {
+        // let attributeTitle = new Text(attribute.displayName, {
+        //   fontFamily: "Roboto",
+        //   fontSize: 20,
+        // });
+
+        // attributeTitle.x = currentX + 10;
+        // attributeTitle.y = currentY + 5;
+
+        // this.addChild(attributeTitle);
+
+        // currentY += attributeTitle.height;
+
+        attribute.value.forEach((value) => {
+          let attributeValue = new Text(value.displayName, {
+            fontFamily: "Roboto",
+            fontSize: 20,
+          });
+
+          attributeValue.x = currentX + 20;
+          attributeValue.y = currentY + 10;
+
+          this.addChild(attributeValue);
+
+          let checkBoxLike = new Checkbox(false);
+          checkBoxLike.x = currentX + 230;
+          checkBoxLike.y = currentY;
+
+          this.addChild(checkBoxLike);
+
+          let checkBoxDislike = new Checkbox(false);
+          checkBoxDislike.x = currentX + 310;
+          checkBoxDislike.y = currentY;
+
+          this.addChild(checkBoxDislike);
+
+          checkBoxLike.onChangeValue = (checkboxValue) => {
+            if (checkboxValue) {
+              checkBoxDislike.setChecked(false);
+            }
+
+            this._infoAttributes = this._infoAttributes.map((infoAttribute) => {
+              if (
+                infoAttribute.path ===
+                `${category.name}.${attribute.name}.${value.name}`
+              ) {
+                return {
+                  ...infoAttribute,
+                  status: (infoAttribute.status = checkboxValue
+                    ? "like"
+                    : "none"),
+                };
+              } else {
+                return infoAttribute;
+              }
+            });
+          };
+
+          checkBoxDislike.onChangeValue = (checkboxValue) => {
+            if (checkboxValue) {
+              checkBoxLike.setChecked(false);
+            }
+
+            this._infoAttributes = this._infoAttributes.map((infoAttribute) => {
+              if (
+                infoAttribute.path ===
+                `${category.name}.${attribute.name}.${value.name}`
+              ) {
+                return {
+                  ...infoAttribute,
+                  status: (infoAttribute.status = checkboxValue
+                    ? "dislike"
+                    : "none"),
+                };
+              } else {
+                return infoAttribute;
+              }
+            });
+          };
+
+          currentY += attributeValue.height + 20;
+        });
+      });
+    });
   }
 
   update(_framesPassed: number): void {
