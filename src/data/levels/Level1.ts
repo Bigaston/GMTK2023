@@ -18,25 +18,22 @@ const level1: Level = {
     benguigui,
   ],
   likes: [
-    attributes.physical.hairColor.bald,
-    attributes.physical.size["1m60-1m80"],
+    attributes.physical.hairColor.dark,
+    attributes.activity.goout.netflix,
   ],
-  dislikes: [
-    attributes.physical.hairColor.blonde,
-    attributes.various.diet.vegan,
-  ],
+  dislikes: [attributes.various.pets.dog],
   alreadyPresentProperty: [
     {
       path: attributes.physical.hairColor.dark,
-      likeStatus: "like",
+      likeStatus: "none",
     },
     {
       path: attributes.activity.goout.netflix,
-      likeStatus: "like",
+      likeStatus: "none",
     },
     {
       path: attributes.various.pets.dog,
-      likeStatus: "dislike",
+      likeStatus: "none",
     },
   ],
 };

@@ -9,6 +9,7 @@ import { MatchNotif } from "../class/MatchNotif";
 import { Level } from "../data/Level";
 import { stringToCategory } from "../data/Attributes";
 import { Checkbox } from "../class/Checkbox";
+import { Button } from "../class/Button";
 
 export class MainScene extends Container implements IScene {
   private _updatable: IUpdatable[] = [];
@@ -44,7 +45,7 @@ export class MainScene extends Container implements IScene {
 
     this._infoAttributes = this._level.alreadyPresentProperty.map((attr) => {
       return {
-        status: "none",
+        status: attr.likeStatus,
         path: attr.path,
         canBeDeleted: false,
       };
@@ -160,8 +161,6 @@ export class MainScene extends Container implements IScene {
     let currentY = 80;
     let currentX = (Manager.width / 3) * 2 + 20;
 
-    console.log(neededCategory);
-
     neededCategory.forEach((category) => {
       currentY += 30;
 
@@ -261,6 +260,38 @@ export class MainScene extends Container implements IScene {
         });
       });
     });
+
+    let button = new Button("Validate");
+
+    button.x =
+      (Manager.width / 3) * 2 + Manager.width / 3 / 2 - button.width / 2;
+    button.y = Manager.height - 100;
+
+    button.onClick = () => {
+      let valid = true;
+
+      this._infoAttributes.forEach((infoAttribute) => {
+        if (infoAttribute.status === "none") {
+          valid = false;
+        }
+
+        if (infoAttribute.status === "like") {
+          if (!this._level.likes.includes(infoAttribute.path)) {
+            valid = false;
+          }
+        }
+
+        if (infoAttribute.status === "dislike") {
+          if (!this._level.dislikes.includes(infoAttribute.path)) {
+            valid = false;
+          }
+        }
+      });
+
+      console.log("valid", valid);
+    };
+
+    this.addChild(button);
   }
 
   update(_framesPassed: number): void {

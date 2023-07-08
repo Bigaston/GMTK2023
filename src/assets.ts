@@ -11,6 +11,8 @@ export const manifest: ResolverManifest = {
         BrokenHeart: "./img/broken-heart.png",
         Checkbox: "./img/ui/checkbox.png",
         CheckboxChecked: "./img/ui/checkboxChecked.png",
+        Button: "./img/ui/button.png",
+        ButtonPressed: "./img/ui/buttonPressed.png",
       },
     },
     {

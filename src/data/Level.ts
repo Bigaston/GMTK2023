@@ -10,5 +10,5 @@ export interface Level {
 
 export interface LevelAttribute {
   path: string;
-  likeStatus: "like" | "dislike";
+  likeStatus: "like" | "dislike" | "none";
 }
