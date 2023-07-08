@@ -3,7 +3,6 @@ import { manifest } from "../assets";
 import { IScene, Manager } from "../class/Manager";
 import { MainScene } from "./MainScene";
 import level1 from "../data/levels/Level1";
-// import { GameScene } from "./GameScene";
 
 export class LoaderScene extends Container implements IScene {
   // for making our loader graphics...

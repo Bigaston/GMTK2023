@@ -330,21 +330,54 @@ export class MainScene extends Container implements IScene {
     buttonValidate.onClick = () => {
       let valid = true;
 
-      this._infoAttributes.forEach((infoAttribute) => {
-        if (infoAttribute.status === "none") {
+      if (
+        this._infoAttributes.filter(
+          (infoAttribute) => infoAttribute.status === "none"
+        ).length > 0
+      ) {
+        valid = false;
+      }
+
+      if (
+        this._level.likes.length !==
+        this._infoAttributes.filter(
+          (infoAttribute) => infoAttribute.status === "like"
+        ).length
+      ) {
+        valid = false;
+      }
+
+      if (
+        this._level.dislikes.length !==
+        this._infoAttributes.filter(
+          (infoAttribute) => infoAttribute.status === "dislike"
+        ).length
+      ) {
+        valid = false;
+      }
+
+      console.log("valid", valid);
+
+      this._level.likes.forEach((like) => {
+        if (
+          !this._infoAttributes.find(
+            (infoAttribute) =>
+              infoAttribute.path === like && infoAttribute.status === "like"
+          )
+        ) {
           valid = false;
         }
+      });
 
-        if (infoAttribute.status === "like") {
-          if (!this._level.likes.includes(infoAttribute.path)) {
-            valid = false;
-          }
-        }
-
-        if (infoAttribute.status === "dislike") {
-          if (!this._level.dislikes.includes(infoAttribute.path)) {
-            valid = false;
-          }
+      this._level.dislikes.forEach((dislike) => {
+        if (
+          !this._infoAttributes.find(
+            (infoAttribute) =>
+              infoAttribute.path === dislike &&
+              infoAttribute.status === "dislike"
+          )
+        ) {
+          valid = false;
         }
       });
 
