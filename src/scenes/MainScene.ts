@@ -1,4 +1,4 @@
-import { Container, Sprite, Texture, Text, Assets } from "pixi.js";
+import { Container, Sprite, Texture, Text, Assets, Ticker } from "pixi.js";
 import { IScene, Manager } from "../class/Manager";
 import { ProfileCard } from "../class/ProfileCard";
 import { IUpdatable } from "../class/IUpdatable";
@@ -39,6 +39,13 @@ export class MainScene extends Container implements IScene {
     canBeDeleted: boolean;
   }[];
   private _infoContainer: Container;
+
+  private _numberOfTry: number = 0;
+  private _numberOfCardUsed: number = 0;
+
+  private _isOnErrorAnimation = false;
+  private _errorAnimationTime = 0;
+  private _errorAnimationDuration = 400;
 
   constructor(level: Level) {
     super();
@@ -335,6 +342,12 @@ export class MainScene extends Container implements IScene {
         }
       });
 
+      this._numberOfTry++;
+
+      if (!valid) {
+        this.onErrorGuess();
+      }
+
       console.log("valid", valid);
     };
 
@@ -369,12 +382,6 @@ export class MainScene extends Container implements IScene {
     }
   }
 
-  update(_framesPassed: number): void {
-    this._updatable.forEach((updatable) => {
-      updatable.update(_framesPassed);
-    });
-  }
-
   public onProfileCardDrop(profile: Profile, sender: ProfileCard) {
     let like = false;
     let dislike = false;
@@ -399,6 +406,33 @@ export class MainScene extends Container implements IScene {
 
     sender.setLiked(like && !dislike ? "liked" : "disliked");
 
+    this._numberOfCardUsed++;
+
     this.addChild(matchNotif);
+  }
+
+  public onErrorGuess() {
+    this._isOnErrorAnimation = true;
+    this._errorAnimationTime = 0;
+  }
+
+  update(_framesPassed: number): void {
+    if (this._isOnErrorAnimation) {
+      this._errorAnimationTime += Ticker.shared.deltaMS;
+
+      this.x = Math.random() * 10 - 5;
+      this.y = Math.random() * 10 - 5;
+
+      if (this._errorAnimationTime >= this._errorAnimationDuration) {
+        this._errorAnimationTime = 0;
+        this._isOnErrorAnimation = false;
+        this.x = 0;
+        this.y = 0;
+      }
+    }
+
+    this._updatable.forEach((updatable) => {
+      updatable.update(_framesPassed);
+    });
   }
 }
