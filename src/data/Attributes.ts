@@ -1,21 +1,21 @@
-interface AttributeCategory {
+export interface AttributeCategory {
   displayName: string;
   name: string;
   attributes: Attribute[];
 }
 
-interface Attribute {
+export interface Attribute {
   displayName: string;
   name: string;
   value: AttributeValue[];
 }
 
-interface AttributeValue {
+export interface AttributeValue {
   displayName: string;
   name: string;
 }
 
-const attributesCategory: AttributeCategory[] = [
+export let attributesCategory: AttributeCategory[] = [
   {
     displayName: "Physical",
     name: "physical",

@@ -58,19 +58,19 @@ export class ProfileCard extends Container {
 
     // Name
     let name = new Text(profile.name, {
-      fontFamily: "Caprasimo",
-      fontSize: 12,
+      fontFamily: "Belanosima",
+      fontSize: 20,
       fill: 0xffffff,
     });
 
     name.x = 10;
-    name.y = ProfileCard.HEIGHT - infoContainerBackground.height + 10;
+    name.y = ProfileCard.HEIGHT - infoContainerBackground.height + 5;
 
     this.addChild(name);
 
     // Age
-    let age = new Text(`Age: ${profile.age}`, {
-      fontFamily: "Arial",
+    let age = new Text(`${profile.age} y.o.`, {
+      fontFamily: "Roboto",
       fontSize: 12,
       fill: 0xffffff,
     });

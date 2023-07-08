@@ -1,6 +1,5 @@
 import { Container, Sprite, Texture } from "pixi.js";
 import { IScene, Manager } from "../class/Manager";
-import level1 from "../data/levels/Level1";
 import { ProfileCard } from "../class/ProfileCard";
 import { IUpdatable } from "../class/IUpdatable";
 import { ProfileHoverBackground } from "../class/ProfileHoverBackground";

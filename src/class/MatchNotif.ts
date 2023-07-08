@@ -14,7 +14,7 @@ export class MatchNotif extends Container {
     this.alpha = 1;
 
     let text = new Text(matchStatus === "match" ? "Like!" : "Dislike...", {
-      fontFamily: "Caprasimo",
+      fontFamily: "Belanosima",
       fontSize: 32,
       fill: matchStatus === "match" ? 0x00ff00 : 0xff0000,
     });
