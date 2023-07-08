@@ -13,6 +13,8 @@ export const manifest: ResolverManifest = {
         CheckboxChecked: "./img/ui/checkboxChecked.png",
         Button: "./img/ui/button.png",
         ButtonPressed: "./img/ui/buttonPressed.png",
+        Panel: "./img/ui/panel.png",
+        RedCross: "./img/ui/redCross.png",
       },
     },
     {

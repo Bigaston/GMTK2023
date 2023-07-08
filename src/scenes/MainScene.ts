@@ -10,6 +10,7 @@ import { Level } from "../data/Level";
 import { stringToCategory } from "../data/Attributes";
 import { Checkbox } from "../class/Checkbox";
 import { Button } from "../class/Button";
+import { ModalProperty } from "../class/ModalProperty";
 
 export class MainScene extends Container implements IScene {
   private _updatable: IUpdatable[] = [];
@@ -37,6 +38,7 @@ export class MainScene extends Container implements IScene {
     path: string;
     canBeDeleted: boolean;
   }[];
+  private _infoContainer: Container;
 
   constructor(level: Level) {
     super();
@@ -154,6 +156,17 @@ export class MainScene extends Container implements IScene {
 
     this.addChild(heartBrokenSprite);
 
+    this._infoContainer = new Container();
+    this._infoContainer.sortableChildren = true;
+    this._infoContainer.zIndex = 2;
+
+    this.addChild(this._infoContainer);
+    this.displayAttributeInfos();
+  }
+
+  displayAttributeInfos() {
+    this._infoContainer.removeChildren();
+
     let neededCategory = stringToCategory(
       this._infoAttributes.map((attribute) => attribute.path)
     );
@@ -174,7 +187,7 @@ export class MainScene extends Container implements IScene {
 
       currentY += categoryTitle.height + 5;
 
-      this.addChild(categoryTitle);
+      this._infoContainer.addChild(categoryTitle);
 
       category.attributes.forEach((attribute) => {
         // let attributeTitle = new Text(attribute.displayName, {
@@ -198,19 +211,19 @@ export class MainScene extends Container implements IScene {
           attributeValue.x = currentX + 20;
           attributeValue.y = currentY + 10;
 
-          this.addChild(attributeValue);
+          this._infoContainer.addChild(attributeValue);
 
           let checkBoxLike = new Checkbox(false);
           checkBoxLike.x = currentX + 230;
           checkBoxLike.y = currentY;
 
-          this.addChild(checkBoxLike);
+          this._infoContainer.addChild(checkBoxLike);
 
           let checkBoxDislike = new Checkbox(false);
           checkBoxDislike.x = currentX + 310;
           checkBoxDislike.y = currentY;
 
-          this.addChild(checkBoxDislike);
+          this._infoContainer.addChild(checkBoxDislike);
 
           checkBoxLike.onChangeValue = (checkboxValue) => {
             if (checkboxValue) {
@@ -261,13 +274,15 @@ export class MainScene extends Container implements IScene {
       });
     });
 
-    let button = new Button("Validate");
+    let buttonValidate = new Button("Validate");
 
-    button.x =
-      (Manager.width / 3) * 2 + Manager.width / 3 / 2 - button.width / 2;
-    button.y = Manager.height - 100;
+    buttonValidate.x =
+      (Manager.width / 3) * 2 +
+      Manager.width / 3 / 2 -
+      buttonValidate.width / 2;
+    buttonValidate.y = Manager.height - 100;
 
-    button.onClick = () => {
+    buttonValidate.onClick = () => {
       let valid = true;
 
       this._infoAttributes.forEach((infoAttribute) => {
@@ -291,7 +306,35 @@ export class MainScene extends Container implements IScene {
       console.log("valid", valid);
     };
 
-    this.addChild(button);
+    this._infoContainer.addChild(buttonValidate);
+
+    // Button Add Property
+
+    if (this._level.canAddProperty) {
+      let addPropertyButton = new Button("Add Property", {
+        fontSize: 16,
+      });
+
+      addPropertyButton.x = (Manager.width / 3) * 2 + 20;
+      addPropertyButton.y = currentY + 20;
+
+      addPropertyButton.onClick = () => {
+        let addPropertyWindow = new ModalProperty();
+        addPropertyWindow.onValueChoosed = (value) => {
+          this._infoAttributes.push({
+            path: value,
+            status: "none",
+            canBeDeleted: true,
+          });
+
+          this.displayAttributeInfos();
+        };
+
+        this._infoContainer.addChild(addPropertyWindow);
+      };
+
+      this._infoContainer.addChild(addPropertyButton);
+    }
   }
 
   update(_framesPassed: number): void {

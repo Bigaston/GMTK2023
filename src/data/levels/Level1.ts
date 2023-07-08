@@ -36,6 +36,7 @@ const level1: Level = {
       likeStatus: "none",
     },
   ],
+  canAddProperty: true,
 };
 
 export default level1;

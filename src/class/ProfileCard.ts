@@ -89,6 +89,10 @@ export class ProfileCard extends Container implements IUpdatable {
     let timeoutHover: number;
 
     this.addEventListener("pointerenter", () => {
+      if (this._isDragging) {
+        return;
+      }
+
       this.addEventListener("pointerleave", onPointerLeave);
 
       timeoutHover = setTimeout(() => {
@@ -96,7 +100,7 @@ export class ProfileCard extends Container implements IUpdatable {
           return;
         }
 
-        this.zIndex = 1001;
+        this.zIndex = 501;
 
         let currentScene = Manager.currentScene as MainScene;
 
@@ -117,6 +121,7 @@ export class ProfileCard extends Container implements IUpdatable {
       currentScene.profileHoverBackground
         .fadeOut()
         .then(() => {
+          console.log(this);
           this.zIndex = 1;
         })
         .catch(() => {
@@ -161,6 +166,7 @@ export class ProfileCard extends Container implements IUpdatable {
 
       this.x = this._initialPosition.x;
       this.y = this._initialPosition.y;
+
       this.zIndex = 1;
 
       this.removeEventListener("pointermove", onPointerMove);

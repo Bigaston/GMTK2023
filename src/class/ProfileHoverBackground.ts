@@ -17,7 +17,7 @@ export class ProfileHoverBackground extends Sprite implements IUpdatable {
 
     this.width = Manager.width;
     this.height = Manager.height;
-    this.zIndex = 1000;
+    this.zIndex = 500;
 
     this.tint = 0x000000;
     this.alpha = 0;

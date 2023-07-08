@@ -69,11 +69,6 @@ export let attributesCategory: AttributeCategory[] = [
         ],
       },
       {
-        displayName: "Morphology",
-        name: "morphology",
-        value: [],
-      },
-      {
         displayName: "Particularity",
         name: "particularity",
         value: [
@@ -124,20 +119,12 @@ export let attributesCategory: AttributeCategory[] = [
         name: "sports",
         value: [
           {
-            displayName: "Football",
-            name: "football",
-          },
-          {
             displayName: "Workout",
             name: "workout",
           },
           {
             displayName: "Running",
             name: "running",
-          },
-          {
-            displayName: "Swimming",
-            name: "swimming",
           },
         ],
       },
@@ -152,10 +139,6 @@ export let attributesCategory: AttributeCategory[] = [
           {
             displayName: "Painting",
             name: "painting",
-          },
-          {
-            displayName: "Writing",
-            name: "writing",
           },
         ],
       },
@@ -218,16 +201,8 @@ export let attributesCategory: AttributeCategory[] = [
             name: "unemployed",
           },
           {
-            displayName: "Employee",
-            name: "employee",
-          },
-          {
-            displayName: "Manager",
-            name: "manager",
-          },
-          {
-            displayName: "Entrepreneur",
-            name: "entrepreneur",
+            displayName: "Boss",
+            name: "boss",
           },
         ],
       },
@@ -246,10 +221,6 @@ export let attributesCategory: AttributeCategory[] = [
           {
             displayName: "Open",
             name: "open",
-          },
-          {
-            displayName: "Threesome",
-            name: "threesome",
           },
         ],
       },
@@ -271,14 +242,6 @@ export let attributesCategory: AttributeCategory[] = [
         displayName: "Spelling",
         name: "spelling",
         value: [
-          {
-            displayName: "Very Good",
-            name: "veryGood",
-          },
-          {
-            displayName: "Good",
-            name: "good",
-          },
           {
             displayName: "Bad",
             name: "bad",
@@ -322,12 +285,6 @@ export let attributes = {
       "1m60-1m80": "physical.size.1m60-1m80",
       "+1m80": "physical.size.+1m80",
     },
-    morphology: {
-      // thin: "physical.morphology.thin",
-      // normal: "physical.morphology.normal",
-      // round: "physical.morphology.round",
-      // athletic: "physical.morphology.athletic",
-    },
     particularity: {
       tattoo: "physical.particularity.tattoo",
       piercing: "physical.particularity.piercing",
@@ -342,15 +299,12 @@ export let attributes = {
       trip: "activity.goout.trip",
     },
     sports: {
-      football: "activity.sports.football",
       workout: "activity.sports.workout",
       running: "activity.sports.running",
-      swimming: "activity.sports.swimming",
     },
     art: {
       music: "activity.art.music",
       painting: "activity.art.painting",
-      writing: "activity.art.writing",
     },
   },
   various: {
@@ -368,23 +322,18 @@ export let attributes = {
     socialClass: {
       student: "various.socialClass.student",
       unemployed: "various.socialClass.unemployed",
-      employee: "various.socialClass.employee",
-      manager: "various.socialClass.manager",
-      entrepreneur: "various.socialClass.entrepreneur",
+      boss: "various.socialClass.boss",
     },
     relationType: {
       oneNight: "various.relationType.oneNight",
       longTerm: "various.relationType.longTerm",
       open: "various.relationType.open",
-      threesome: "various.relationType.threesome",
     },
     hasChildren: {
       yes: "various.hasChildren.yes",
       no: "various.hasChildren.no",
     },
     spelling: {
-      veryGood: "various.spelling.veryGood",
-      good: "various.spelling.good",
       bad: "various.spelling.bad",
     },
     pets: {
