@@ -214,7 +214,5 @@ export class ProfileCardPreview extends Container implements IUpdatable {
         currentY += attributeText.height + 5;
       });
     });
-
-    console.log(neededCategory);
   }
 }

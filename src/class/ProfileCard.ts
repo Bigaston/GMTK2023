@@ -121,7 +121,6 @@ export class ProfileCard extends Container implements IUpdatable {
       currentScene.profileHoverBackground
         .fadeOut()
         .then(() => {
-          console.log(this);
           this.zIndex = 1;
         })
         .catch(() => {

@@ -203,6 +203,36 @@ export class MainScene extends Container implements IScene {
         // currentY += attributeTitle.height;
 
         attribute.value.forEach((value) => {
+          let levelAttribute = this._infoAttributes.find(
+            (infoAttribute) =>
+              infoAttribute.path ===
+              `${category.name}.${attribute.name}.${value.name}`
+          )!;
+
+          if (levelAttribute.canBeDeleted) {
+            let deleteValue = new Sprite(Assets.get("RedCross"));
+            deleteValue.width = 20;
+            deleteValue.height = 20;
+
+            deleteValue.x = currentX - 5;
+            deleteValue.y = currentY + 13;
+
+            deleteValue.eventMode = "static";
+            deleteValue.cursor = "pointer";
+
+            deleteValue.addEventListener("pointerdown", () => {
+              this._infoAttributes = this._infoAttributes.filter(
+                (infoAttribute) =>
+                  infoAttribute.path !==
+                  `${category.name}.${attribute.name}.${value.name}`
+              );
+
+              this.displayAttributeInfos();
+            });
+
+            this._infoContainer.addChild(deleteValue);
+          }
+
           let attributeValue = new Text(value.displayName, {
             fontFamily: "Roboto",
             fontSize: 20,
@@ -213,13 +243,15 @@ export class MainScene extends Container implements IScene {
 
           this._infoContainer.addChild(attributeValue);
 
-          let checkBoxLike = new Checkbox(false);
+          let checkBoxLike = new Checkbox(levelAttribute.status === "like");
           checkBoxLike.x = currentX + 230;
           checkBoxLike.y = currentY;
 
           this._infoContainer.addChild(checkBoxLike);
 
-          let checkBoxDislike = new Checkbox(false);
+          let checkBoxDislike = new Checkbox(
+            levelAttribute.status === "dislike"
+          );
           checkBoxDislike.x = currentX + 310;
           checkBoxDislike.y = currentY;
 
