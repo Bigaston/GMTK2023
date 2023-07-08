@@ -3,6 +3,8 @@ import { manifest } from "../assets";
 import { IScene, Manager } from "../class/Manager";
 import { MainScene } from "./MainScene";
 import level1 from "../data/levels/Level1";
+import level3 from "../data/levels/Level3";
+import level4 from "../data/levels/Level4";
 
 export class LoaderScene extends Container implements IScene {
   // for making our loader graphics...
@@ -50,7 +52,7 @@ export class LoaderScene extends Container implements IScene {
 
   private gameLoaded(): void {
     // Change scene to the game scene!
-    Manager.changeScene(new MainScene(level1));
+    Manager.changeScene(new MainScene(level4));
   }
 
   public update(_framesPassed: number): void {

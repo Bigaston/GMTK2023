@@ -12,8 +12,8 @@ import { MainScene } from "../scenes/MainScene";
 import { Manager } from "./Manager";
 
 export class ProfileCard extends Container {
-  public static readonly WIDTH = 150;
-  public static readonly HEIGHT = 150;
+  public static WIDTH = 150;
+  public static HEIGHT = 150;
   public static readonly HOVER_TIMEOUT = 300;
 
   private _profile: Profile;

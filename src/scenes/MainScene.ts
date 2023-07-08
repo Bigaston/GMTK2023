@@ -90,17 +90,38 @@ export class MainScene extends Container implements IScene {
 
     this.addChild(cardPartBackground);
 
-    this._level.profiles.forEach((profile, index) => {
-      let profileCard = new ProfileCard(profile, {
-        x: (index % 5) * (ProfileCard.WIDTH + 16) + 20,
-        y:
-          Manager.height / 2 +
-          Math.floor(index / 5) * (ProfileCard.HEIGHT + 16) +
-          20,
-      });
+    // Change Card Size
+    if (this._level.profiles.length > 10) {
+      ProfileCard.WIDTH = 100;
+      ProfileCard.HEIGHT = 100;
 
-      this.addChild(profileCard);
-    });
+      this._level.profiles.forEach((profile, index) => {
+        let profileCard = new ProfileCard(profile, {
+          x: (index % 7) * (ProfileCard.WIDTH + 16) + 20,
+          y:
+            Manager.height / 2 +
+            Math.floor(index / 7) * (ProfileCard.HEIGHT + 16) +
+            20,
+        });
+
+        this.addChild(profileCard);
+      });
+    } else {
+      ProfileCard.WIDTH = 150;
+      ProfileCard.HEIGHT = 150;
+
+      this._level.profiles.forEach((profile, index) => {
+        let profileCard = new ProfileCard(profile, {
+          x: (index % 5) * (ProfileCard.WIDTH + 16) + 20,
+          y:
+            Manager.height / 2 +
+            Math.floor(index / 5) * (ProfileCard.HEIGHT + 16) +
+            20,
+        });
+
+        this.addChild(profileCard);
+      });
+    }
 
     // Profile Hover Background
     this.addChild(this._profileHoverBackground);
@@ -203,18 +224,6 @@ export class MainScene extends Container implements IScene {
       this._infoContainer.addChild(categoryTitle);
 
       category.attributes.forEach((attribute) => {
-        // let attributeTitle = new Text(attribute.displayName, {
-        //   fontFamily: "Roboto",
-        //   fontSize: 20,
-        // });
-
-        // attributeTitle.x = currentX + 10;
-        // attributeTitle.y = currentY + 5;
-
-        // this.addChild(attributeTitle);
-
-        // currentY += attributeTitle.height;
-
         attribute.value.forEach((value) => {
           let levelAttribute = this._infoAttributes.find(
             (infoAttribute) =>
@@ -249,6 +258,8 @@ export class MainScene extends Container implements IScene {
           let attributeValue = new Text(value.displayName, {
             fontFamily: "Roboto",
             fontSize: 20,
+            wordWrap: true,
+            wordWrapWidth: 215,
           });
 
           attributeValue.x = currentX + 20;
@@ -406,8 +417,6 @@ export class MainScene extends Container implements IScene {
       } else {
         this.onErrorGuess();
       }
-
-      console.log("valid", valid);
     };
 
     this._infoContainer.addChild(buttonValidate);
@@ -425,6 +434,14 @@ export class MainScene extends Container implements IScene {
       addPropertyButton.onClick = () => {
         let addPropertyWindow = new ModalProperty();
         addPropertyWindow.onValueChoosed = (value) => {
+          if (
+            this._infoAttributes.find(
+              (infoAttribute) => infoAttribute.path === value
+            )
+          ) {
+            return;
+          }
+
           this._infoAttributes.push({
             path: value,
             status: "none",
