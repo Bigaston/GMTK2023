@@ -153,23 +153,23 @@ export let attributesCategory: AttributeCategory[] = [
         name: "age",
         value: [
           {
-            displayName: "18 - 21",
+            displayName: "18 - 21 y.o.",
             name: "18-21",
           },
           {
-            displayName: "22 - 30",
+            displayName: "22 - 30 y.o.",
             name: "22-30",
           },
           {
-            displayName: "31 - 45",
+            displayName: "31 - 45 y.o.",
             name: "31-45",
           },
           {
-            displayName: "46 - 60",
+            displayName: "46 - 60 y.o.",
             name: "46-60",
           },
           {
-            displayName: "60 +",
+            displayName: "60 + y.o.",
             name: "60+",
           },
         ],
@@ -211,15 +211,15 @@ export let attributesCategory: AttributeCategory[] = [
         name: "relationType",
         value: [
           {
-            displayName: "One Night",
+            displayName: "One Night Stand",
             name: "oneNight",
           },
           {
-            displayName: "Long Term",
+            displayName: "Long Term Relationship",
             name: "longTerm",
           },
           {
-            displayName: "Open",
+            displayName: "Open Relationship",
             name: "open",
           },
         ],
@@ -229,11 +229,11 @@ export let attributesCategory: AttributeCategory[] = [
         name: "hasChildren",
         value: [
           {
-            displayName: "Yes",
+            displayName: "Has Children",
             name: "yes",
           },
           {
-            displayName: "No",
+            displayName: "No Children",
             name: "no",
           },
         ],
@@ -243,7 +243,7 @@ export let attributesCategory: AttributeCategory[] = [
         name: "spelling",
         value: [
           {
-            displayName: "Bad",
+            displayName: "Bad Spelling",
             name: "bad",
           },
         ],
@@ -261,7 +261,7 @@ export let attributesCategory: AttributeCategory[] = [
             name: "cat",
           },
           {
-            displayName: "Allergy",
+            displayName: "Pet Allergy",
             name: "allergy",
           },
         ],
