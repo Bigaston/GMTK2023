@@ -1,4 +1,5 @@
 import { Assets, Sprite } from "pixi.js";
+import { AudioManager } from "./AudioManager";
 
 export class Checkbox extends Sprite {
   public onChangeValue: (value: boolean) => void = () => {};
@@ -22,7 +23,7 @@ export class Checkbox extends Sprite {
 
       this.onChangeValue(this._checked);
 
-      Assets.get("UIClick").play();
+      AudioManager.playSound("UIClick");
     });
   }
 

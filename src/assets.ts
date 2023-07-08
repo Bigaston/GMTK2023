@@ -15,6 +15,8 @@ export const manifest: ResolverManifest = {
         ButtonPressed: "./img/ui/buttonPressed.png",
         Panel: "./img/ui/panel.png",
         RedCross: "./img/ui/redCross.png",
+        AudioOn: "./img/ui/audioOn.png",
+        AudioOff: "./img/ui/audioOff.png",
         UIClick: "./sound/uiClick.ogg",
         BtnPressed: "./sound/btnPressed.ogg",
         BtnReleased: "./sound/btnReleased.ogg",

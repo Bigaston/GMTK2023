@@ -155,7 +155,7 @@ export class ModalWin extends Container {
 
     // Button
     if (isFinalLevel) {
-      let restartButton = new Button("Back to main menu");
+      let restartButton = new Button("Restart");
 
       restartButton.position.set(
         panel.x + panel.width / 2 - restartButton.width / 2,

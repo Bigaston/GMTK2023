@@ -13,7 +13,6 @@ import { Button } from "../class/Button";
 import { ModalProperty } from "../class/ModalProperty";
 import { ModalWin } from "../class/ModalWin";
 import textStyles from "../textStyles";
-import { MainMenu } from "./MainMenu";
 import { AudioManager } from "../class/AudioManager";
 
 export class MainScene extends Container implements IScene {
@@ -365,9 +364,9 @@ export class MainScene extends Container implements IScene {
         };
 
         modalWin.onBackMenu = () => {
-          let mainMenu = new MainMenu();
+          let mainScene = new MainScene(levels[0]);
 
-          Manager.changeScene(mainMenu);
+          Manager.changeScene(mainScene);
         };
 
         this.addChild(modalWin);
@@ -407,6 +406,34 @@ export class MainScene extends Container implements IScene {
 
       this._infoContainer.addChild(addPropertyButton);
     }
+
+    // Mute Button
+    let muteButton = Sprite.from(
+      AudioManager.muted ? Assets.get("AudioOff") : Assets.get("AudioOn")
+    );
+
+    muteButton.width = 64;
+    muteButton.height = 64;
+
+    muteButton.x = 10;
+    muteButton.y = 10;
+
+    muteButton.eventMode = "static";
+    muteButton.cursor = "pointer";
+
+    muteButton.addEventListener("pointerdown", () => {
+      if (AudioManager.muted) {
+        AudioManager.unmute();
+      } else {
+        AudioManager.mute();
+      }
+
+      muteButton.texture = AudioManager.muted
+        ? Assets.get("AudioOff")
+        : Assets.get("AudioOn");
+    });
+
+    this.addChild(muteButton);
   }
 
   public onProfileCardDrop(profile: Profile, sender: ProfileCard) {
@@ -442,9 +469,7 @@ export class MainScene extends Container implements IScene {
     this._isOnErrorAnimation = true;
     this._errorAnimationTime = 0;
 
-    let audioAsset = Assets.get("Buzzer");
-    audioAsset.volume(0.2);
-    audioAsset.play();
+    AudioManager.playSound("Buzzer", 0.1);
   }
 
   update(_framesPassed: number): void {

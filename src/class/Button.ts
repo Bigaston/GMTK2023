@@ -1,4 +1,5 @@
 import { Assets, Container, NineSlicePlane, Text } from "pixi.js";
+import { AudioManager } from "./AudioManager";
 
 interface ButtonOption {
   fontSize?: number;
@@ -38,9 +39,7 @@ export class Button extends Container {
 
       textComponent.y += 5;
 
-      let audioAsset = Assets.get("BtnPressed");
-      audioAsset.volume(0.2);
-      audioAsset.play();
+      AudioManager.playSound("BtnPressed", 0.3);
 
       this.onClick();
     });
