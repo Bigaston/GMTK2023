@@ -69,15 +69,16 @@ export class MainScene extends Container implements IScene {
     this.addChild(infoPartBackground);
 
     this._level.profiles.forEach((profile, index) => {
-      let profileCard = new ProfileCard(profile);
-
-      profileCard.x = (index % 5) * (ProfileCard.WIDTH + 16) + 20;
-      profileCard.y =
-        Manager.height / 2 +
-        Math.floor(index / 5) * (ProfileCard.HEIGHT + 16) +
-        20;
+      let profileCard = new ProfileCard(profile, {
+        x: (index % 5) * (ProfileCard.WIDTH + 16) + 20,
+        y:
+          Manager.height / 2 +
+          Math.floor(index / 5) * (ProfileCard.HEIGHT + 16) +
+          20,
+      });
 
       this.addChild(profileCard);
+      this._updatable.push(profileCard);
     });
 
     // Profile Hover Background

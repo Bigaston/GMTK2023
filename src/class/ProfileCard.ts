@@ -6,28 +6,34 @@ import {
   Texture,
   Text,
   FederatedPointerEvent,
+  Ticker,
 } from "pixi.js";
 import { Profile } from "../data/Profile";
 import { MainScene } from "../scenes/MainScene";
 import { Manager } from "./Manager";
+import { IUpdatable } from "./IUpdatable";
 
-export class ProfileCard extends Container {
+export class ProfileCard extends Container implements IUpdatable {
   public static readonly WIDTH = 150;
   public static readonly HEIGHT = 150;
   public static readonly HOVER_TIMEOUT = 300;
 
   private _profile: Profile;
   private _likedStatus: "liked" | "disliked" | undefined = undefined;
+  private _initialPosition: { x: number; y: number } = { x: 0, y: 0 };
+  private _isDragging: boolean = false;
 
-  constructor(profile: Profile) {
+  constructor(profile: Profile, position: { x: number; y: number }) {
     super();
 
-    // this.width = ProfileCard.WIDTH;
-    // this.height = ProfileCard.HEIGHT;
     this.cursor = "pointer";
     this.eventMode = "static";
 
+    this.x = position.x;
+    this.y = position.y;
+
     this._profile = profile;
+    this._initialPosition = position;
 
     let mask = new Graphics()
       .beginFill(0xffffff)
@@ -87,7 +93,7 @@ export class ProfileCard extends Container {
       this.addEventListener("pointerleave", onPointerLeave);
 
       timeoutHover = setTimeout(() => {
-        if (isDragging) {
+        if (this._isDragging) {
           return;
         }
 
@@ -122,8 +128,6 @@ export class ProfileCard extends Container {
     };
 
     let mouseOffset = { x: 0, y: 0 };
-    let initialPosition = { x: 0, y: 0 };
-    let isDragging = false;
 
     this.addEventListener("pointerdown", (event) => {
       if (this._likedStatus !== undefined) return;
@@ -131,10 +135,10 @@ export class ProfileCard extends Container {
       mouseOffset.x = event.data.global.x - this.x;
       mouseOffset.y = event.data.global.y - this.y;
 
-      initialPosition.x = this.x;
-      initialPosition.y = this.y;
+      this._initialPosition.x = this.x;
+      this._initialPosition.y = this.y;
 
-      isDragging = true;
+      this._isDragging = true;
 
       this.addEventListener("pointermove", onPointerMove);
       this.addEventListener("pointerup", onPointerUp);
@@ -153,11 +157,11 @@ export class ProfileCard extends Container {
     };
 
     let onPointerUp = (event: FederatedPointerEvent) => {
-      isDragging = false;
+      this._isDragging = false;
       clearTimeout(timeoutHover);
 
-      this.x = initialPosition.x;
-      this.y = initialPosition.y;
+      this.x = this._initialPosition.x;
+      this.y = this._initialPosition.y;
       this.zIndex = 1;
 
       this.removeEventListener("pointermove", onPointerMove);
@@ -189,5 +193,12 @@ export class ProfileCard extends Container {
     likedSprite.y = 0;
 
     this.addChild(likedSprite);
+  }
+
+  update(_frameElapsed: number): void {
+    if (!this._isDragging) {
+      this.y =
+        this._initialPosition.y + Math.sin(Date.now() / 800 + this.x) * 5;
+    }
   }
 }
