@@ -400,7 +400,5 @@ export class MainScene extends Container implements IScene {
     sender.setLiked(like && !dislike ? "liked" : "disliked");
 
     this.addChild(matchNotif);
-
-    console.log(profile);
   }
 }
