@@ -6,6 +6,8 @@ export const manifest: ResolverManifest = {
       name: "main",
       assets: {
         Caprasimo: "./Caprasimo.ttf",
+        Heart: "./img/heart.png",
+        BrokenHeart: "./img/broken-heart.png",
       },
     },
     {

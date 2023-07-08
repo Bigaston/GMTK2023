@@ -7,6 +7,7 @@ import { ProfileHoverBackground } from "../class/ProfileHoverBackground";
 import { ProfileCardPreview } from "../class/ProfileCardPreview";
 import { Profile } from "../data/Profile";
 import { MatchNotif } from "../class/MatchNotif";
+import { Level } from "../data/Level";
 
 export class MainScene extends Container implements IScene {
   private _updatable: IUpdatable[] = [];
@@ -27,9 +28,12 @@ export class MainScene extends Container implements IScene {
     return this._matcherZone;
   }
 
-  constructor() {
+  private _level: Level;
+
+  constructor(level: Level) {
     super();
 
+    this._level = level;
     this.sortableChildren = true;
 
     // User Part
@@ -39,7 +43,7 @@ export class MainScene extends Container implements IScene {
     userPartBackground.x = 0;
     userPartBackground.y = 0;
 
-    userPartBackground.tint = 0xff0000;
+    userPartBackground.tint = 0xff00ff;
 
     this.addChild(userPartBackground);
 
@@ -65,10 +69,7 @@ export class MainScene extends Container implements IScene {
 
     this.addChild(infoPartBackground);
 
-    // Import Profile Card
-    let level = level1;
-
-    level.profiles.forEach((profile, index) => {
+    this._level.profiles.forEach((profile, index) => {
       let profileCard = new ProfileCard(profile);
 
       profileCard.x = (index % 5) * (ProfileCard.WIDTH + 16) + 20;
@@ -116,9 +117,28 @@ export class MainScene extends Container implements IScene {
   }
 
   public onProfileCardDrop(profile: Profile, sender: ProfileCard) {
-    sender.removeFromParent();
+    let like = false;
+    let dislike = false;
 
-    let matchNotif = new MatchNotif({ x: 600, y: 200 });
+    profile.attributes.forEach((attribute) => {
+      if (this._level.likes.includes(attribute)) {
+        like = true;
+      }
+
+      if (this._level.dislikes.includes(attribute)) {
+        dislike = true;
+      }
+    });
+
+    let matchNotif: MatchNotif;
+
+    if (like && !dislike) {
+      matchNotif = new MatchNotif({ x: 600, y: 200 }, "match");
+    } else {
+      matchNotif = new MatchNotif({ x: 600, y: 200 }, "noMatch");
+    }
+
+    sender.setLiked(like && !dislike ? "liked" : "disliked");
 
     this.addChild(matchNotif);
 

@@ -17,6 +17,7 @@ export class ProfileCard extends Container {
   public static readonly HOVER_TIMEOUT = 300;
 
   private _profile: Profile;
+  private _likedStatus: "liked" | "disliked" | undefined = undefined;
 
   constructor(profile: Profile) {
     super();
@@ -125,6 +126,8 @@ export class ProfileCard extends Container {
     let isDragging = false;
 
     this.addEventListener("pointerdown", (event) => {
+      if (this._likedStatus !== undefined) return;
+
       mouseOffset.x = event.data.global.x - this.x;
       mouseOffset.y = event.data.global.y - this.y;
 
@@ -170,5 +173,21 @@ export class ProfileCard extends Container {
         currentScene.onProfileCardDrop(this._profile, this);
       }
     };
+  }
+
+  public setLiked(likedStatus: "liked" | "disliked") {
+    this._likedStatus = likedStatus;
+
+    this.cursor = "default";
+
+    let likedSprite = Sprite.from(
+      likedStatus === "liked" ? Assets.get("Heart") : Assets.get("BrokenHeart")
+    );
+    likedSprite.width = 50;
+    likedSprite.height = 50;
+    likedSprite.x = ProfileCard.WIDTH - likedSprite.width;
+    likedSprite.y = 0;
+
+    this.addChild(likedSprite);
   }
 }

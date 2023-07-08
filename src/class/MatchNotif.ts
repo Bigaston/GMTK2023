@@ -2,7 +2,10 @@ import { Container, Text } from "pixi.js";
 import anime from "animejs/lib/anime.es.js";
 
 export class MatchNotif extends Container {
-  constructor(position: { x: number; y: number }) {
+  constructor(
+    position: { x: number; y: number },
+    matchStatus: "match" | "noMatch"
+  ) {
     super();
 
     this.x = position.x;
@@ -10,10 +13,10 @@ export class MatchNotif extends Container {
 
     this.alpha = 1;
 
-    let text = new Text("Match!", {
+    let text = new Text(matchStatus === "match" ? "Like!" : "Dislike...", {
       fontFamily: "Caprasimo",
       fontSize: 32,
-      fill: 0x00ff0,
+      fill: matchStatus === "match" ? 0x00ff00 : 0xff0000,
     });
 
     anime({

@@ -2,6 +2,7 @@ import { Container, Graphics, Assets } from "pixi.js";
 import { manifest } from "../assets";
 import { IScene, Manager } from "../class/Manager";
 import { MainScene } from "./MainScene";
+import level1 from "../data/levels/Level1";
 // import { GameScene } from "./GameScene";
 
 export class LoaderScene extends Container implements IScene {
@@ -50,7 +51,7 @@ export class LoaderScene extends Container implements IScene {
 
   private gameLoaded(): void {
     // Change scene to the game scene!
-    Manager.changeScene(new MainScene());
+    Manager.changeScene(new MainScene(level1));
   }
 
   public update(_framesPassed: number): void {
