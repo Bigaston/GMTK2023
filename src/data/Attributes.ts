@@ -109,8 +109,8 @@ export let attributesCategory: AttributeCategory[] = [
             name: "party",
           },
           {
-            displayName: "Trip",
-            name: "trip",
+            displayName: "Travel",
+            name: "travel",
           },
         ],
       },
@@ -296,7 +296,7 @@ export let attributes = {
       netflix: "activity.goout.netflix",
       culture: "activity.goout.culture",
       party: "activity.goout.party",
-      trip: "activity.goout.trip",
+      travel: "activity.goout.travel",
     },
     sports: {
       workout: "activity.sports.workout",

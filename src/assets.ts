@@ -25,9 +25,10 @@ export const manifest: ResolverManifest = {
       },
     },
     {
-      name: "level1",
+      name: "profiles",
       assets: {
         Profile_Benguigui: "./img/profiles/benguigui.jpg",
+        Profile_1: "./img/profiles/1.jpg",
       },
     },
   ],
