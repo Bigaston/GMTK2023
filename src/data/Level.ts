@@ -1,4 +1,5 @@
 import { Profile } from "./Profile";
+import level1 from "./levels/Level1";
 
 export interface Level {
   number: number;
@@ -13,3 +14,5 @@ export interface LevelAttribute {
   path: string;
   likeStatus: "like" | "dislike" | "none";
 }
+
+export let levels = [level1];

@@ -8,6 +8,7 @@ import {
 } from "pixi.js";
 import { Manager } from "./Manager";
 import { attributesCategory } from "../data/Attributes";
+import textStyles from "../textStyles";
 
 export class ModalProperty extends Container {
   public onValueChoosed: (value: string) => void = () => {};
@@ -60,10 +61,8 @@ export class ModalProperty extends Container {
 
     // Title Modal
     let title = new Text("Add Property", {
-      fontFamily: "Belanosima",
+      ...textStyles.title,
       fontSize: 30,
-      fill: 0x000000,
-      align: "center",
     });
 
     title.position.set(

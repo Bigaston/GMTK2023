@@ -6,11 +6,14 @@ import { ProfileHoverBackground } from "../class/ProfileHoverBackground";
 import { ProfileCardPreview } from "../class/ProfileCardPreview";
 import { Profile } from "../data/Profile";
 import { MatchNotif } from "../class/MatchNotif";
-import { Level } from "../data/Level";
+import { Level, levels } from "../data/Level";
 import { stringToCategory } from "../data/Attributes";
 import { Checkbox } from "../class/Checkbox";
 import { Button } from "../class/Button";
 import { ModalProperty } from "../class/ModalProperty";
+import { ModalWin } from "../class/ModalWin";
+import textStyles from "../textStyles";
+import { MainMenu } from "./MainMenu";
 
 export class MainScene extends Container implements IScene {
   private _updatable: IUpdatable[] = [];
@@ -137,12 +140,13 @@ export class MainScene extends Container implements IScene {
     this.addChild(infoPartBackground);
 
     let infoTitle = new Text("User Like Profile", {
-      fontFamily: "Belanosima",
+      ...textStyles.title,
+      fontSize: 30,
     });
 
     infoTitle.x =
       (Manager.width / 3) * 2 + (Manager.width / 3 / 2 - infoTitle.width / 2);
-    infoTitle.y = 20;
+    infoTitle.y = 5;
 
     this.addChild(infoTitle);
 
@@ -344,7 +348,27 @@ export class MainScene extends Container implements IScene {
 
       this._numberOfTry++;
 
-      if (!valid) {
+      if (valid) {
+        let modalWin = new ModalWin(
+          this._numberOfTry,
+          this._numberOfCardUsed,
+          this._level.number === levels.length - 1
+        );
+
+        modalWin.onNextLevel = () => {
+          let mainScene = new MainScene(levels[this._level.number + 1]);
+
+          Manager.changeScene(mainScene);
+        };
+
+        modalWin.onBackMenu = () => {
+          let mainMenu = new MainMenu();
+
+          Manager.changeScene(mainMenu);
+        };
+
+        this.addChild(modalWin);
+      } else {
         this.onErrorGuess();
       }
 

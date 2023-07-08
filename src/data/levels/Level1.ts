@@ -4,7 +4,7 @@ import { Level } from "../Level";
 import benguigui from "../profiles/benguigui";
 
 const level1: Level = {
-  number: 1,
+  number: 0,
   profiles: [
     benguigui,
     benguigui,
