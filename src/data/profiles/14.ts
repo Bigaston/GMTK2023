@@ -19,6 +19,7 @@ const profile14: Profile = {
     attributes.various.hasChildren.yes,
     attributes.activity.goout.party,
     attributes.various.relationType.oneNight,
+    attributes.physical.particularity.piercing,
   ],
 };
 

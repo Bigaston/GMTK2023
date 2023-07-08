@@ -20,6 +20,7 @@ const profile2: Profile = {
     attributes.activity.goout.travel,
     attributes.activity.art.music,
     attributes.various.socialClass.student,
+    attributes.physical.particularity.piercing,
   ],
 };
 

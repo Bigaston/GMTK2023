@@ -13,7 +13,10 @@ const profile12: Profile = {
     attributes.physical.hairColor.colored,
     attributes.various.age["22-30"],
   ],
-  displayedAttributes: [attributes.various.relationType.oneNight],
+  displayedAttributes: [
+    attributes.various.relationType.oneNight,
+    attributes.physical.particularity.piercing,
+  ],
 };
 
 export default profile12;

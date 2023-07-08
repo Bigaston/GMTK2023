@@ -16,6 +16,7 @@ const profile9_1: Profile = {
   displayedAttributes: [
     attributes.various.pets.allergy,
     attributes.activity.goout.netflix,
+    attributes.physical.particularity.piercing,
   ],
 };
 
