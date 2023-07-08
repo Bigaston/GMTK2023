@@ -138,13 +138,11 @@ export class ProfileCard extends Container implements IUpdatable {
       mouseOffset.x = event.data.global.x - this.x;
       mouseOffset.y = event.data.global.y - this.y;
 
-      this._initialPosition.x = this.x;
-      this._initialPosition.y = this.y;
-
       this._isDragging = true;
 
       this.addEventListener("pointermove", onPointerMove);
       this.addEventListener("pointerup", onPointerUp);
+      this.addEventListener("pointerupoutside", onPointerUp);
 
       let currentScene = Manager.currentScene as MainScene;
 
