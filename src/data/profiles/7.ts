@@ -4,7 +4,7 @@ import { Profile } from "../Profile";
 const profile7: Profile = {
   name: "Grace",
   age: 19,
-  profilePicture: "Profile_Benguigui",
+  profilePicture: "Profile_7",
   description: "",
   attributes: [
     attributes.various.relationType.open,
