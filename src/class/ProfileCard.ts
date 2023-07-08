@@ -6,7 +6,6 @@ import {
   Texture,
   Text,
   FederatedPointerEvent,
-  Ticker,
 } from "pixi.js";
 import { Profile } from "../data/Profile";
 import { MainScene } from "../scenes/MainScene";
@@ -198,7 +197,7 @@ export class ProfileCard extends Container implements IUpdatable {
   update(_frameElapsed: number): void {
     if (!this._isDragging) {
       this.y =
-        this._initialPosition.y + Math.sin(Date.now() / 800 + this.x) * 5;
+        this._initialPosition.y + Math.sin(Date.now() / 800 + this.x) * 2;
     }
   }
 }
