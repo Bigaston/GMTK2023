@@ -41,12 +41,16 @@ export class Button extends Container {
       this.onClick();
     });
 
-    this.addEventListener("pointerup", () => {
+    let pointerUp = () => {
       button.texture = Assets.get("Button");
       button.y -= 5;
       button.height += 5;
 
       textComponent.y -= 5;
-    });
+    };
+
+    this.addEventListener("pointerup", pointerUp);
+
+    this.addEventListener("pointerupoutside", pointerUp);
   }
 }
