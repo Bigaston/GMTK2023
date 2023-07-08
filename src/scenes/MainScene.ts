@@ -14,6 +14,7 @@ import { ModalProperty } from "../class/ModalProperty";
 import { ModalWin } from "../class/ModalWin";
 import textStyles from "../textStyles";
 import { MainMenu } from "./MainMenu";
+import { AudioManager } from "../class/AudioManager";
 
 export class MainScene extends Container implements IScene {
   private _updatable: IUpdatable[] = [];
@@ -64,6 +65,8 @@ export class MainScene extends Container implements IScene {
     });
 
     this.sortableChildren = true;
+
+    AudioManager.playMusicOneTime();
 
     // User Part
     let userPartBackground = Sprite.from(Texture.WHITE);

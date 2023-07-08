@@ -19,6 +19,7 @@ export const manifest: ResolverManifest = {
         BtnPressed: "./sound/btnPressed.ogg",
         BtnReleased: "./sound/btnReleased.ogg",
         Buzzer: "./sound/buzzer.ogg",
+        Music: "./sound/music.mp3",
       },
     },
     {
