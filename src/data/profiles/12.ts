@@ -11,6 +11,7 @@ const profile12: Profile = {
     attributes.various.spelling.bad,
     attributes.physical.particularity.piercing,
     attributes.physical.hairColor.colored,
+    attributes.various.age["22-30"],
   ],
   displayedAttributes: [attributes.various.relationType.oneNight],
 };

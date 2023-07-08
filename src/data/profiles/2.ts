@@ -13,6 +13,7 @@ const profile2: Profile = {
     attributes.physical.hairColor.ginger,
     attributes.physical.particularity.piercing,
     attributes.various.socialClass.student,
+    attributes.various.age["18-21"],
   ],
   displayedAttributes: [
     attributes.various.pets.dog,

@@ -12,6 +12,7 @@ const profile11: Profile = {
     attributes.physical.hairColor.bald,
     attributes.various.spelling.bad,
     attributes.physical.size["1m60-1m80"],
+    attributes.various.age["46-60"],
   ],
   displayedAttributes: [
     attributes.various.socialClass.boss,

@@ -10,6 +10,7 @@ const profile7: Profile = {
     attributes.various.relationType.open,
     attributes.physical.size["-1m60"],
     attributes.physical.hairColor.blonde,
+    attributes.various.age["18-21"],
   ],
   displayedAttributes: [
     attributes.various.relationType.open,

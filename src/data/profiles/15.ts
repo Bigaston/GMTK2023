@@ -11,6 +11,7 @@ const profile15: Profile = {
     attributes.physical.hairColor.ginger,
     attributes.various.hasChildren.yes,
     attributes.various.relationType.open,
+    attributes.various.age["22-30"],
   ],
   displayedAttributes: [
     attributes.activity.goout.netflix,

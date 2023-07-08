@@ -10,6 +10,7 @@ const profile18: Profile = {
     attributes.activity.goout.party,
     attributes.activity.sports.running,
     attributes.physical.hairColor.gray,
+    attributes.various.age["60+"],
   ],
   displayedAttributes: [
     attributes.activity.goout.party,

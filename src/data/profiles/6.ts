@@ -13,6 +13,7 @@ const profile6: Profile = {
     attributes.activity.goout.travel,
     attributes.various.socialClass.boss,
     attributes.physical.hairColor.dark,
+    attributes.various.age["31-45"],
   ],
   displayedAttributes: [
     attributes.physical.size["+1m80"],

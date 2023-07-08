@@ -11,6 +11,7 @@ const profile4: Profile = {
     attributes.various.relationType.open,
     attributes.various.pets.cat,
     attributes.activity.goout.travel,
+    attributes.various.age["60+"],
   ],
   displayedAttributes: [
     attributes.various.relationType.open,

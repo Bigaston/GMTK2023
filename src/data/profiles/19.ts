@@ -11,6 +11,7 @@ const profile19: Profile = {
     attributes.activity.goout.party,
     attributes.physical.particularity.beard,
     attributes.physical.particularity.tattoo,
+    attributes.various.age["22-30"],
   ],
   displayedAttributes: [
     attributes.physical.size["+1m80"],

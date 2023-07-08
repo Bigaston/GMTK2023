@@ -11,6 +11,7 @@ const profile8: Profile = {
     attributes.various.pets.dog,
     attributes.various.relationType.longTerm,
     attributes.physical.size["+1m80"],
+    attributes.various.age["31-45"],
   ],
   displayedAttributes: [
     attributes.various.socialClass.unemployed,

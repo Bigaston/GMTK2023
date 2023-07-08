@@ -12,6 +12,7 @@ const profile3: Profile = {
     attributes.various.relationType.longTerm,
     attributes.activity.goout.travel,
     attributes.physical.hairColor.dark,
+    attributes.various.age["31-45"],
   ],
   displayedAttributes: [
     attributes.various.diet.vegan,

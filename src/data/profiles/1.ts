@@ -1,4 +1,4 @@
-// import { attributes } from "../Attributes";
+import { attributes } from "../Attributes";
 import { Profile } from "../Profile";
 
 const profile1: Profile = {
@@ -6,7 +6,7 @@ const profile1: Profile = {
   age: 55,
   profilePicture: "Profile_1",
   description: "",
-  attributes: [],
+  attributes: [attributes.various.age["46-60"]],
   displayedAttributes: [],
 };
 

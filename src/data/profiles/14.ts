@@ -13,6 +13,7 @@ const profile14: Profile = {
     attributes.various.diet.vegan,
     attributes.activity.art.music,
     attributes.physical.hairColor.blonde,
+    attributes.various.age["22-30"],
   ],
   displayedAttributes: [
     attributes.various.hasChildren.yes,

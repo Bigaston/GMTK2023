@@ -12,6 +12,7 @@ const profile10: Profile = {
     attributes.various.relationType.oneNight,
     attributes.physical.hairColor.ginger,
     attributes.physical.particularity.tattoo,
+    attributes.various.age["22-30"],
   ],
   displayedAttributes: [
     attributes.various.diet.vegan,

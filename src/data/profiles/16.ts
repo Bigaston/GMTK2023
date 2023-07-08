@@ -12,6 +12,7 @@ const profile16: Profile = {
     attributes.activity.art.music,
     attributes.physical.hairColor.dark,
     attributes.physical.particularity.beard,
+    attributes.various.age["18-21"],
   ],
   displayedAttributes: [
     attributes.activity.goout.culture,

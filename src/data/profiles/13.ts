@@ -12,6 +12,7 @@ const profile13: Profile = {
     attributes.various.relationType.oneNight,
     attributes.physical.hairColor.colored,
     attributes.various.spelling.bad,
+    attributes.various.age["31-45"],
   ],
   displayedAttributes: [
     attributes.various.hasChildren.yes,

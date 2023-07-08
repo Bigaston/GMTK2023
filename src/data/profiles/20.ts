@@ -11,6 +11,7 @@ const profile20: Profile = {
     attributes.activity.art.painting,
     attributes.physical.hairColor.blonde,
     attributes.various.hasChildren.yes,
+    attributes.various.age["31-45"],
   ],
   displayedAttributes: [
     attributes.activity.sports.running,

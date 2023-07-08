@@ -11,6 +11,7 @@ const profile9_1: Profile = {
     attributes.activity.goout.netflix,
     attributes.physical.particularity.piercing,
     attributes.physical.hairColor.colored,
+    attributes.various.age["31-45"],
   ],
   displayedAttributes: [
     attributes.various.pets.allergy,
