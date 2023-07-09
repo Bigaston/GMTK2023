@@ -21,7 +21,6 @@ const profile14: Profile = {
     attributes.activity.sports.workout,
     attributes.various.diet.vegan,
     attributes.activity.art.music,
-    attributes.various.age["22-30"],
   ],
 };
 
