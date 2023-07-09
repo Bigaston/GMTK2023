@@ -1,5 +1,7 @@
 import { appWindow } from "@tauri-apps/api/window";
-import { Application, DisplayObject } from "pixi.js";
+import { Application, DisplayObject, BaseTexture, SCALE_MODES } from "pixi.js";
+
+BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST;
 
 export class Manager {
   private constructor() {
