@@ -552,9 +552,9 @@ export class MainScene extends Container implements IScene {
     let matchNotif: MatchNotif;
 
     if (like && !dislike) {
-      matchNotif = new MatchNotif({ x: 600, y: 200 }, "match");
+      matchNotif = new MatchNotif({ x: 650, y: 200 }, "match");
     } else {
-      matchNotif = new MatchNotif({ x: 600, y: 200 }, "noMatch");
+      matchNotif = new MatchNotif({ x: 650, y: 200 }, "noMatch");
     }
 
     sender.setLiked(like && !dislike ? "liked" : "disliked");
