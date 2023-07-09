@@ -1,4 +1,12 @@
-import { Container, Sprite, Texture, Text, Assets, Ticker } from "pixi.js";
+import {
+  Container,
+  Sprite,
+  Texture,
+  Text,
+  Assets,
+  Ticker,
+  Graphics,
+} from "pixi.js";
 import { IScene, Manager } from "../class/Manager";
 import { ProfileCard } from "../class/ProfileCard";
 import { IUpdatable } from "../class/IUpdatable";
@@ -90,6 +98,27 @@ export class MainScene extends Container implements IScene {
 
     this.addChild(cardPartBackground);
 
+    // Matcher Picture
+    let matcherPicture = Sprite.from(this._level.picture);
+    matcherPicture.width = 300;
+    matcherPicture.height = 300;
+
+    this._matcherZone.x = Manager.width / 3 - matcherPicture.width / 2;
+    this._matcherZone.y = Manager.height / 2 - matcherPicture.height;
+
+    this._matcherZone.addChild(matcherPicture);
+
+    this.addChild(this._matcherZone);
+
+    // Matcher Mask
+    // Mask
+    let mask = new Graphics()
+      .beginFill(0xffffff)
+      .drawRoundedRect(0, 0, 300, 350, 10);
+
+    this._matcherZone.addChild(mask);
+    matcherPicture.mask = mask;
+
     // Change Card Size
     if (this._level.profiles.length > 10) {
       ProfileCard.WIDTH = 100;
@@ -137,19 +166,6 @@ export class MainScene extends Container implements IScene {
 
     this.addChild(this._profileCardPreview);
     this._updatable.push(this._profileCardPreview);
-
-    // Matcher Picture
-    let matcherPicture = Sprite.from(Texture.WHITE);
-    matcherPicture.width = 300;
-    matcherPicture.height = 300;
-    matcherPicture.tint = 0x00ffff;
-
-    this._matcherZone.x = Manager.width / 3 - matcherPicture.width / 2;
-    this._matcherZone.y = Manager.height / 2 - matcherPicture.height;
-
-    this._matcherZone.addChild(matcherPicture);
-
-    this.addChild(this._matcherZone);
 
     // Info Part
     let infoPartBackground = Sprite.from(Texture.WHITE);

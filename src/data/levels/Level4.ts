@@ -45,6 +45,7 @@ const level4: Level = {
   ],
   alreadyPresentProperty: [],
   canAddProperty: true,
+  picture: "Profile_Benguigui",
 };
 
 export default level4;

@@ -39,6 +39,7 @@ const level2: Level = {
     },
   ],
   canAddProperty: true,
+  picture: "Profile_2",
 };
 
 export default level2;

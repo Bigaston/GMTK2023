@@ -12,6 +12,7 @@ export interface Level {
   dislikes: string[];
   alreadyPresentProperty: LevelAttribute[];
   canAddProperty: boolean;
+  picture: string;
 }
 
 export interface LevelAttribute {
