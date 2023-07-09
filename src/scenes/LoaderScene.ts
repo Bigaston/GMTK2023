@@ -1,4 +1,4 @@
-import { Container, Graphics, Assets } from "pixi.js";
+import { Container, Graphics, Assets, Text } from "pixi.js";
 import { manifest } from "../assets";
 import { IScene, Manager } from "../class/Manager";
 import { MainScene } from "./MainScene";
@@ -9,13 +9,16 @@ export class LoaderScene extends Container implements IScene {
   private loaderBar: Container;
   private loaderBarBoder: Graphics;
   private loaderBarFill: Graphics;
+
+  private loaderText: Text;
+
   constructor() {
     super();
 
     const loaderBarWidth = Manager.width * 0.8;
 
     this.loaderBarFill = new Graphics();
-    this.loaderBarFill.beginFill(0x008800, 1);
+    this.loaderBarFill.beginFill(0x49b960, 1);
     this.loaderBarFill.drawRect(0, 0, loaderBarWidth, 50);
     this.loaderBarFill.endFill();
     this.loaderBarFill.scale.x = 0;
@@ -30,6 +33,18 @@ export class LoaderScene extends Container implements IScene {
     this.loaderBar.position.x = (Manager.width - this.loaderBar.width) / 2;
     this.loaderBar.position.y = (Manager.height - this.loaderBar.height) / 2;
     this.addChild(this.loaderBar);
+
+    this.loaderText = new Text("Loading: 0%", {
+      fill: 0xd5dbdb,
+      fontFamily: "sans-serif",
+      fontSize: 20,
+      fontStyle: "italic",
+    });
+
+    this.loaderText.position.x = (Manager.width - this.loaderText.width) / 2;
+    this.loaderText.position.y = this.loaderBar.y + this.loaderText.height + 30;
+
+    this.addChild(this.loaderText);
 
     this.initializeLoader().then(() => {
       this.gameLoaded();
@@ -46,6 +61,7 @@ export class LoaderScene extends Container implements IScene {
 
   private downloadProgress(progressRatio: number): void {
     this.loaderBarFill.scale.x = progressRatio;
+    this.loaderText.text = `Loading: ${Math.round(progressRatio * 100)}%`;
   }
 
   private gameLoaded(): void {
