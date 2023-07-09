@@ -5,7 +5,8 @@ const profile3: Profile = {
   name: "Sara",
   age: 38,
   profilePicture: "Profile_3",
-  description: "",
+  description:
+    "Cat mommy looking for a strong relationship with someone who share my values!",
   attributes: [
     attributes.various.diet.vegan,
     attributes.various.pets.cat,

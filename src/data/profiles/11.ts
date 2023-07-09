@@ -5,7 +5,8 @@ const profile11: Profile = {
   name: "George",
   age: 58,
   profilePicture: "Profile_Benguigui",
-  description: "",
+  description:
+    "You will has to share the space of my hearth with my 3 cars! #Lamborgini #Ferarri #Buggaty",
   attributes: [
     attributes.various.socialClass.boss,
     attributes.activity.goout.culture,

@@ -5,7 +5,8 @@ const profile2: Profile = {
   name: "Emily",
   age: 20,
   profilePicture: "Profile_2",
-  description: "",
+  description:
+    "Student in art school, travel fan and dog lover. Will you be my next travel partner or my muse?",
   attributes: [
     attributes.various.pets.dog,
     attributes.activity.goout.travel,

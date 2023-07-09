@@ -5,7 +5,7 @@ const profile13: Profile = {
   name: "David",
   age: 33,
   profilePicture: "Profile_Benguigui",
-  description: "",
+  description: "Looking either for a baby sitter or a fun person to party with",
   attributes: [
     attributes.various.hasChildren.yes,
     attributes.activity.goout.party,

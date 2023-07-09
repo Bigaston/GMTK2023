@@ -5,7 +5,7 @@ const profile20: Profile = {
   name: "Karen",
   age: 37,
   profilePicture: "Profile_20",
-  description: "",
+  description: "Mother of 3, looking for a new husband to take care of me",
   attributes: [
     attributes.activity.sports.running,
     attributes.activity.art.painting,

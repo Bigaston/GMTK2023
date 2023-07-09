@@ -5,7 +5,8 @@ const profile10: Profile = {
   name: "April",
   age: 30,
   profilePicture: "Profile_Benguigui",
-  description: "",
+  description:
+    "Vegan, strong lady, looking to not sleep alone while I'm in town!",
   attributes: [
     attributes.various.diet.vegan,
     attributes.various.socialClass.boss,

@@ -4,8 +4,9 @@ import { Profile } from "../Profile";
 const profile9_1: Profile = {
   name: "Allison",
   age: 32,
-  profilePicture: "Profile_Benguigui",
-  description: "",
+  profilePicture: "Profile_9",
+  description:
+    "Here to find someone to watch Netflix with! Currently unemployed but I can be here for you anytime!",
   attributes: [
     attributes.various.pets.allergy,
     attributes.activity.goout.netflix,

@@ -5,7 +5,7 @@ const profile1: Profile = {
   name: "Woof",
   age: 55,
   profilePicture: "Profile_1",
-  description: "",
+  description: "Wouf",
   attributes: [attributes.various.age["46-60"]],
   displayedAttributes: [],
 };

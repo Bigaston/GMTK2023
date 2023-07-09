@@ -5,7 +5,8 @@ const profile18: Profile = {
   name: "Susan",
   age: 65,
   profilePicture: "Profile_Benguigui",
-  description: "",
+  description:
+    "Still young in my head, still young in the bed! I'm not older, I earn XP!",
   attributes: [
     attributes.activity.goout.party,
     attributes.activity.sports.running,

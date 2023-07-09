@@ -5,7 +5,8 @@ const profile6: Profile = {
   name: "Eric",
   age: 45,
   profilePicture: "Profile_6",
-  description: "",
+  description:
+    "My three pillar? Workout, travel and my own compani! #boss #travel #workout",
   attributes: [
     attributes.various.spelling.bad,
     attributes.physical.size["+1m80"],

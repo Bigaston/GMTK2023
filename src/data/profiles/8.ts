@@ -5,7 +5,8 @@ const profile8: Profile = {
   name: "Matthew",
   age: 37,
   profilePicture: "Profile_Benguigui",
-  description: "",
+  description:
+    "Hey you! I see you yesterday at the mall and I can't remember your number... Can you give it to me?",
   attributes: [
     attributes.various.socialClass.unemployed,
     attributes.various.pets.dog,

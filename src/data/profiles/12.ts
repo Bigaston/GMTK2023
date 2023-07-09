@@ -5,7 +5,8 @@ const profile12: Profile = {
   name: "Ryan",
   age: 24,
   profilePicture: "Profile_Benguigui",
-  description: "",
+  description:
+    "Futur Mark Zukerberg, looking for someone with appartment for a crasy night...",
   attributes: [
     attributes.various.relationType.oneNight,
     attributes.various.spelling.bad,

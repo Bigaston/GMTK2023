@@ -2,10 +2,11 @@ import { attributes } from "../Attributes";
 import { Profile } from "../Profile";
 
 const profile15: Profile = {
-  name: "Hannah",
+  name: "Yuki",
   age: 22,
   profilePicture: "Profile_Benguigui",
-  description: "",
+  description:
+    "RL i'm Hannah, but here you can call me Yuki. Do you want to share a crunchyrol membership?",
   attributes: [
     attributes.activity.goout.netflix,
     attributes.physical.hairColor.ginger,
