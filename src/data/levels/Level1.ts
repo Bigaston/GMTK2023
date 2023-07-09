@@ -29,7 +29,7 @@ const level1: Level = {
     },
   ],
   canAddProperty: false,
-  picture: "Profile_Benguigui",
+  picture: "Profile_21",
 };
 
 export default level1;

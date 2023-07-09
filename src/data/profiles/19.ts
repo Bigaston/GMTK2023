@@ -4,7 +4,7 @@ import { Profile } from "../Profile";
 const profile19: Profile = {
   name: "Austin",
   age: 25,
-  profilePicture: "Profile_Benguigui",
+  profilePicture: "Profile_19",
   description: "I can enter in any club, they think I'm the bouncer",
   attributes: [
     attributes.physical.size["+1m80"],
