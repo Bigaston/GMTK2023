@@ -31,6 +31,7 @@ export const manifest: ResolverManifest = {
         Profile_1: "./img/profiles/1.jpg",
         Profile_2: "./img/profiles/2.jpg",
         Profile_3: "./img/profiles/3.jpg",
+        Profile_4: "./img/profiles/4.jpg",
         Profile_5: "./img/profiles/5.jpg",
         Profile_6: "./img/profiles/6.jpg",
         Profile_7: "./img/profiles/7.jpg",
