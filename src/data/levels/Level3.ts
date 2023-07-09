@@ -37,6 +37,8 @@ const level3: Level = {
   alreadyPresentProperty: [],
   canAddProperty: true,
   picture: "Profile_3",
+  name: "Sara",
+  age: 38,
 };
 
 export default level3;

@@ -30,6 +30,8 @@ const level1: Level = {
   ],
   canAddProperty: false,
   picture: "Profile_21",
+  name: "Christopher",
+  age: 41,
 };
 
 export default level1;

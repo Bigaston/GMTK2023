@@ -13,6 +13,8 @@ export interface Level {
   alreadyPresentProperty: LevelAttribute[];
   canAddProperty: boolean;
   picture: string;
+  name: string;
+  age: number;
 }
 
 export interface LevelAttribute {

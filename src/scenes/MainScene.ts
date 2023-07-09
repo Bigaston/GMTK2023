@@ -108,7 +108,38 @@ export class MainScene extends Container implements IScene {
 
     this._matcherZone.addChild(matcherPicture);
 
-    this.addChild(this._matcherZone);
+    // Matcher Info
+    let matcherInfoBackground = Sprite.from(Texture.WHITE);
+    matcherInfoBackground.width = 300;
+    matcherInfoBackground.height = 50;
+    matcherInfoBackground.y = 250;
+    matcherInfoBackground.tint = 0x000000;
+    matcherInfoBackground.alpha = 0.5;
+
+    this._matcherZone.addChild(matcherInfoBackground);
+
+    let matcherInfoText = new Text(this._level.name, {
+      fontFamily: "Belanosima",
+      fontSize: 24,
+      fill: 0xffffff,
+    });
+
+    matcherInfoText.y = 250 + 10;
+    matcherInfoText.x = 10;
+
+    this._matcherZone.addChild(matcherInfoText);
+
+    // Matcher Info Age
+    let matcherInfoAge = new Text(`${this._level.age} y.o.`, {
+      fontFamily: "Roboto",
+      fontSize: 16,
+      fill: 0xffffff,
+    });
+
+    matcherInfoAge.y = 250 + 18;
+    matcherInfoAge.x = 300 - matcherInfoAge.width - 10;
+
+    this._matcherZone.addChild(matcherInfoAge);
 
     // Matcher Mask
     // Mask
@@ -117,7 +148,9 @@ export class MainScene extends Container implements IScene {
       .drawRoundedRect(0, 0, 300, 350, 10);
 
     this._matcherZone.addChild(mask);
-    matcherPicture.mask = mask;
+    this._matcherZone.mask = mask;
+
+    this.addChild(this._matcherZone);
 
     // Change Card Size
     if (this._level.profiles.length > 10) {
