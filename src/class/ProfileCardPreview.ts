@@ -161,7 +161,7 @@ export class ProfileCardPreview extends Container implements IUpdatable {
 
     this._infoContainer.addChild(profileAge);
 
-    let profileDescription = new Text(`‟${profile.description}”`, {
+    let profileDescription = new Text(profile.description, {
       fontFamily: "Roboto",
       fontSize: 16,
       fill: 0x000000,
