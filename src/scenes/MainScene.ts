@@ -234,6 +234,9 @@ export class MainScene extends Container implements IScene {
     let heartSprite = Sprite.from(Assets.get("Heart"));
     heartSprite.width = 50;
     heartSprite.height = 50;
+    heartSprite.scale.x = Math.min(heartSprite.scale.x, heartSprite.scale.y);
+    heartSprite.scale.y = Math.min(heartSprite.scale.x, heartSprite.scale.y);
+
     heartSprite.x = (Manager.width / 3) * 2 + 250;
     heartSprite.y = 70;
 
@@ -242,6 +245,14 @@ export class MainScene extends Container implements IScene {
     let heartBrokenSprite = Sprite.from(Assets.get("BrokenHeart"));
     heartBrokenSprite.width = 50;
     heartBrokenSprite.height = 50;
+    heartBrokenSprite.scale.x = Math.min(
+      heartBrokenSprite.scale.x,
+      heartBrokenSprite.scale.y
+    );
+    heartBrokenSprite.scale.y = Math.min(
+      heartBrokenSprite.scale.x,
+      heartBrokenSprite.scale.y
+    );
 
     heartBrokenSprite.x = (Manager.width / 3) * 2 + 330;
     heartBrokenSprite.y = 70;
