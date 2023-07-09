@@ -29,7 +29,7 @@ export class ModalProperty extends Container {
 
     this.addChild(background);
 
-    let panel = new NineSlicePlane(Assets.get("Panel"), 7, 6, 7, 6);
+    let panel = new NineSlicePlane(Assets.get("Panel"), 1, 27, 90, 1);
     panel.width = 600;
     panel.height = 600;
     panel.position.set(
@@ -41,13 +41,10 @@ export class ModalProperty extends Container {
 
     this.addChild(panel);
 
-    let closeButton = Sprite.from(Assets.get("RedCross"));
-    closeButton.width = 32;
-    closeButton.height = 32;
-    closeButton.position.set(
-      panel.x + panel.width - closeButton.width - 10,
-      panel.y + 10
-    );
+    let closeButton = Sprite.from(Texture.EMPTY);
+    closeButton.width = 24;
+    closeButton.height = 24;
+    closeButton.position.set(panel.x + panel.width - 36, panel.y);
 
     closeButton.zIndex = 1002;
     closeButton.cursor = "pointer";
@@ -67,7 +64,7 @@ export class ModalProperty extends Container {
 
     title.position.set(
       panel.x + panel.width / 2 - title.width / 2,
-      panel.y + 20
+      panel.y + 25
     );
 
     this.addChild(title);

@@ -76,27 +76,34 @@ export class MainScene extends Container implements IScene {
 
     AudioManager.playMusicOneTime();
 
+    // Background
+    let background = Sprite.from(Assets.get("Background"));
+    background.width = Manager.width;
+    background.height = Manager.height;
+
+    this.addChild(background);
+
     // User Part
-    let userPartBackground = Sprite.from(Texture.WHITE);
-    userPartBackground.width = (Manager.width / 3) * 2;
-    userPartBackground.height = Manager.height / 2;
-    userPartBackground.x = 0;
-    userPartBackground.y = 0;
+    // let userPartBackground = Sprite.from(Texture.WHITE);
+    // userPartBackground.width = (Manager.width / 3) * 2;
+    // userPartBackground.height = Manager.height / 2;
+    // userPartBackground.x = 0;
+    // userPartBackground.y = 0;
 
-    userPartBackground.tint = 0xff00ff;
+    // userPartBackground.tint = 0xff00ff;
 
-    this.addChild(userPartBackground);
+    // this.addChild(userPartBackground);
 
     // Card Parts
-    let cardPartBackground = Sprite.from(Texture.WHITE);
-    cardPartBackground.width = (Manager.width / 3) * 2;
-    cardPartBackground.height = Manager.height / 2;
-    cardPartBackground.x = 0;
-    cardPartBackground.y = Manager.height / 2;
+    // let cardPartBackground = Sprite.from(Texture.WHITE);
+    // cardPartBackground.width = (Manager.width / 3) * 2;
+    // cardPartBackground.height = Manager.height / 2;
+    // cardPartBackground.x = 0;
+    // cardPartBackground.y = Manager.height / 2;
 
-    cardPartBackground.tint = 0x0000ff;
+    // cardPartBackground.tint = 0x0000ff;
 
-    this.addChild(cardPartBackground);
+    // this.addChild(cardPartBackground);
 
     // Matcher Picture
     let matcherPicture = Sprite.from(this._level.picture);
@@ -162,6 +169,7 @@ export class MainScene extends Container implements IScene {
           x: (index % 7) * (ProfileCard.WIDTH + 16) + 20,
           y:
             Manager.height / 2 +
+            15 +
             Math.floor(index / 7) * (ProfileCard.HEIGHT + 16) +
             20,
         });
@@ -177,6 +185,7 @@ export class MainScene extends Container implements IScene {
           x: (index % 5) * (ProfileCard.WIDTH + 16) + 20,
           y:
             Manager.height / 2 +
+            15 +
             Math.floor(index / 5) * (ProfileCard.HEIGHT + 16) +
             20,
         });
@@ -201,24 +210,24 @@ export class MainScene extends Container implements IScene {
     this._updatable.push(this._profileCardPreview);
 
     // Info Part
-    let infoPartBackground = Sprite.from(Texture.WHITE);
-    infoPartBackground.width = Manager.width / 3;
-    infoPartBackground.height = Manager.height;
-    infoPartBackground.x = (Manager.width / 3) * 2;
-    infoPartBackground.y = 0;
+    // let infoPartBackground = Sprite.from(Texture.WHITE);
+    // infoPartBackground.width = Manager.width / 3;
+    // infoPartBackground.height = Manager.height;
+    // infoPartBackground.x = (Manager.width / 3) * 2;
+    // infoPartBackground.y = 0;
 
-    infoPartBackground.tint = 0x00ff00;
+    // infoPartBackground.tint = 0x00ff00;
 
-    this.addChild(infoPartBackground);
+    // this.addChild(infoPartBackground);
 
-    let infoTitle = new Text("User Like Profile", {
+    let infoTitle = new Text("User Love Profile", {
       ...textStyles.title,
       fontSize: 30,
     });
 
     infoTitle.x =
       (Manager.width / 3) * 2 + (Manager.width / 3 / 2 - infoTitle.width / 2);
-    infoTitle.y = 5;
+    infoTitle.y = 20;
 
     this.addChild(infoTitle);
 
@@ -226,7 +235,7 @@ export class MainScene extends Container implements IScene {
     heartSprite.width = 50;
     heartSprite.height = 50;
     heartSprite.x = (Manager.width / 3) * 2 + 250;
-    heartSprite.y = 50;
+    heartSprite.y = 70;
 
     this.addChild(heartSprite);
 
@@ -235,7 +244,7 @@ export class MainScene extends Container implements IScene {
     heartBrokenSprite.height = 50;
 
     heartBrokenSprite.x = (Manager.width / 3) * 2 + 330;
-    heartBrokenSprite.y = 50;
+    heartBrokenSprite.y = 70;
 
     this.addChild(heartBrokenSprite);
 
@@ -385,7 +394,7 @@ export class MainScene extends Container implements IScene {
       (Manager.width / 3) * 2 +
       Manager.width / 3 / 2 -
       buttonValidate.width / 2;
-    buttonValidate.y = Manager.height - 100;
+    buttonValidate.y = Manager.height - 70;
 
     buttonValidate.onClick = () => {
       let valid = true;
@@ -514,8 +523,8 @@ export class MainScene extends Container implements IScene {
     muteButton.width = 64;
     muteButton.height = 64;
 
-    muteButton.x = 10;
-    muteButton.y = 10;
+    muteButton.x = 5;
+    muteButton.y = 30;
 
     muteButton.eventMode = "static";
     muteButton.cursor = "pointer";

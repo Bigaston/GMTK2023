@@ -31,7 +31,7 @@ export class ModalWin extends Container {
 
     this.addChild(background);
 
-    let panel = new NineSlicePlane(Assets.get("Panel"), 7, 6, 7, 6);
+    let panel = new NineSlicePlane(Assets.get("Panel"), 1, 27, 90, 1);
     panel.width = 600;
     panel.height = 320;
     panel.position.set(
@@ -52,7 +52,7 @@ export class ModalWin extends Container {
 
     title.position.set(
       panel.x + panel.width / 2 - title.width / 2,
-      panel.y + 20
+      panel.y + 25
     );
 
     this.addChild(title);

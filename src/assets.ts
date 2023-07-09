@@ -22,6 +22,7 @@ export const manifest: ResolverManifest = {
         BtnReleased: "./sound/btnReleased.ogg",
         Buzzer: "./sound/buzzer.ogg",
         Music: "./sound/music.mp3",
+        Background: "./img/background.png",
       },
     },
     {
