@@ -62,8 +62,61 @@ const level5: Level = {
     attributes.various.spelling.bad,
     attributes.various.pets.cat,
   ],
-  alreadyPresentProperty: [],
-  canAddProperty: true,
+  alreadyPresentProperty: [
+    {
+      path: attributes.physical.particularity.piercing,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.age["31-45"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.activity.sports.running,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.physical.size["+1m80"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.activity.goout.party,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.hasChildren.yes,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.activity.art.painting,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.relationType.open,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.physical.hairColor.bald,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.diet.vegan,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.socialClass.boss,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.spelling.bad,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.pets.cat,
+      likeStatus: "none",
+    },
+  ],
+  canAddProperty: false,
   picture: "Profile_5",
   name: "Kate",
   age: 29,

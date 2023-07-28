@@ -34,8 +34,37 @@ const level3: Level = {
     attributes.physical.particularity.beard,
     attributes.activity.goout.culture,
   ],
-  alreadyPresentProperty: [],
-  canAddProperty: true,
+  alreadyPresentProperty: [
+    {
+      path: attributes.various.diet.vegan,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.physical.hairColor.colored,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.relationType.longTerm,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.age["31-45"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.spelling.bad,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.physical.particularity.beard,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.activity.goout.culture,
+      likeStatus: "none",
+    },
+  ],
+  canAddProperty: false,
   picture: "Profile_3",
   name: "Sara",
   age: 38,

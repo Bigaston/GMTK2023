@@ -43,8 +43,49 @@ const level4: Level = {
     attributes.various.age["60+"],
     attributes.physical.particularity.piercing,
   ],
-  alreadyPresentProperty: [],
-  canAddProperty: true,
+  alreadyPresentProperty: [
+    {
+      path: attributes.various.age["18-21"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.relationType.open,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.physical.size["-1m60"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.physical.hairColor.blonde,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.hasChildren.yes,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.age["22-30"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.age["31-45"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.age["46-60"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.age["60+"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.physical.particularity.piercing,
+      likeStatus: "none",
+    },
+  ],
+  canAddProperty: false,
   picture: "Profile_4",
   name: "Albert",
   age: 62,

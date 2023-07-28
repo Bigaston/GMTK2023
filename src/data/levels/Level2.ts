@@ -37,8 +37,20 @@ const level2: Level = {
       path: attributes.various.socialClass.student,
       likeStatus: "none",
     },
+    {
+      path: attributes.various.age["18-21"],
+      likeStatus: "none",
+    },
+    {
+      path: attributes.activity.goout.travel,
+      likeStatus: "none",
+    },
+    {
+      path: attributes.various.socialClass.boss,
+      likeStatus: "none",
+    },
   ],
-  canAddProperty: true,
+  canAddProperty: false,
   picture: "Profile_2",
   name: "Emily",
   age: 20,
