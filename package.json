@@ -21,7 +21,7 @@
     "animejs": "^3.2.1",
     "howler": "^2.2.3",
     "howler-pixi-loader-middleware": "^4.0.0",
-    "pixi.js": "^7.2.4",
+    "pixi.js": "^7.3.2",
     "tslib": "^2.6.0"
   }
 }
